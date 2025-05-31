@@ -1,0 +1,450 @@
+<!--JavaScriptの処理-->
+
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.5/dist/jquery.validate.js"></script>
+
+<script>
+  let SpreadSheetReadOnly = "";
+  let ApplyToList = "";
+
+  function openSpreadSheet () {
+    window.open(SpreadSheetReadOnly);
+  }
+
+  function makeApplyToOption () {
+    const applyTo = ApplyToList;
+    const headerSelect = document.getElementById("applyTo");
+    const select = document.getElementsByName("applyTo")[0];
+
+    applyTo.forEach((applyTo, index) => {
+      const headerOption = document.createElement("option");
+      headerOption.textContent = applyTo;
+      headerOption.setAttribute("value", applyTo);
+      if (index === 0) {
+        headerOption.setAttribute("selected", true);
+      }
+      headerSelect.append(headerOption);
+
+      const option = document.createElement("option");
+      option.textContent = applyTo;
+      option.setAttribute("value", applyTo);
+      select.append(option);
+    });
+  }
+
+  function makeQuantityOption () {
+		const select = document.getElementsByName("quantity")[0];
+  	for (let i = 1; i <= 500; i++) {
+			const option = document.createElement("option");
+		  option.setAttribute("value", i);
+			option.textContent = i;
+      if (i === 1) {
+        option.setAttribute("selected", true);
+      }
+			select.append(option);
+		}
+    console.log("makeQuantityOption success!");
+	}
+
+  function makeTaxRateOption () {
+    const select = document.getElementsByName("taxRate")[0];
+  	for (let i = 0; i <= 20; i++) {
+			const option = document.createElement("option");
+		  option.setAttribute("value", i);
+			option.textContent = `${i}%`;
+      if (i === 10) {
+        option.setAttribute("selected", true);
+      }
+			select.append(option);
+		}
+    console.log("makeTaxRateOption success!");
+  }
+
+  function makeAdjustOption () {
+    const select = document.getElementsByName("adjust")[0];
+  	for (let i = 0; i <= 5; i++) {
+			const option = document.createElement("option");
+		  option.setAttribute("value", i);
+      if (i === 0) {
+        option.textContent = `±${i}`;
+        option.setAttribute("selected", true);
+      }
+      else {
+        option.textContent = `+${i}`;
+      }
+			select.append(option);
+		}
+    console.log("makeAdjustOption success!");
+  }
+  
+  function classSwitcher (clicked) {
+    const switchRemovedId = clicked.id.replace("Switch", ""); // IDから文字列"Switch"を取り除く
+    console.log(switchRemovedId);
+
+    const toggleSwitch = document.querySelector(`#${clicked.id} .toggleSwitch`); // トグルスイッチの実装
+    const span = document.querySelectorAll(`#${clicked.id} > span`);
+    toggleSwitch.classList.toggle("left");
+    toggleSwitch.classList.toggle("right");
+    span.forEach((element) => element.classList.toggle("selected"));
+
+    if (switchRemovedId === "retailer" || switchRemovedId === "applyTo" || switchRemovedId === "purpose") {
+      const switchDisable = document.getElementById(switchRemovedId); // 一括入力欄の活性切換
+      switchDisable.toggleAttribute("disabled");  
+    }
+
+    const switchVisibility = document.getElementsByClassName(switchRemovedId); // 個別入力欄の表示切替
+    for (let element of switchVisibility) {
+      element.classList.toggle("invisible");
+    }
+  }
+
+  function recalc () {
+    const batchRetailer = document.querySelector("#retailerSwitch .toggleSwitch").classList.contains("left");
+    const batchApplyTo = document.querySelector("#applyToSwitch .toggleSwitch").classList.contains("left");
+    const batchPurpose = document.querySelector("#purposeSwitch .toggleSwitch").classList.contains("left");
+
+    if (batchRetailer) {
+      const batchValue = document.getElementById("retailer").value;
+      //console.log(`batchValue: ${batchValue}`);
+      document.getElementsByName("retailer").forEach((select) => select.value = batchValue);
+    }
+    if (batchApplyTo) {
+      const batchValue = document.getElementById("applyTo").value;
+      //console.log(`batchValue: ${batchValue}`);
+      document.getElementsByName("applyTo").forEach((select) => select.value = batchValue);
+    }
+    if (batchPurpose) {
+      const batchValue = document.getElementById("purpose").value;
+      //console.log(`batchValue: ${batchValue}`);
+      const batchOption = document.getElementsByName("purpose");
+      batchOption.forEach((element) => element.value = batchValue);
+    }
+
+    const unitPrice = document.getElementsByName("unitPrice");
+    const quantity = document.getElementsByName("quantity");
+    const taxRate = document.getElementsByName("taxRate");
+    const tax = document.getElementsByName("tax");
+    const reduction = document.getElementsByName("reduction");
+    const adjust = document.getElementsByName("adjust");
+    const itemPrice = document.getElementsByName("itemPrice");
+    const otherCosts = document.getElementById("otherCosts");
+    const totalPrice = document.getElementById("totalPrice");
+
+    const includingTax = document.querySelector("#taxRateSwitch .toggleSwitch").classList.contains("left");
+    //console.log(`includingTax: ${includingTax}`);
+    const includingReduction = document.querySelector("#reductionSwitch .toggleSwitch").classList.contains("right");
+    //console.log(`includingReduction: ${includingReduction}`);
+    const includingAdjust = document.querySelector("#adjustSwitch .toggleSwitch").classList.contains("right");
+    //console.log(`includingAdjust: ${includingAdjust}`);
+
+    let sum = 0;
+    for (let i = 1; i < itemNumber+1; i++) { // itemOriginalを除く
+      let val = unitPrice[i].value *  quantity[i].value;
+      let calcTax = 0;
+      if (!includingTax) {
+        calcTax += Math.trunc(val * (taxRate[i].value / 100));
+      }
+      if (includingAdjust) {
+        calcTax += Number(adjust[i].value);
+      }
+      tax[i].textContent = calcTax;
+      val += Number(calcTax);
+      if (includingReduction) {
+        val -= Number(reduction[i].value);
+      }
+      itemPrice[i].textContent = val;
+      sum += Number(val);
+    }
+    sum += Number(otherCosts.value);
+    totalPrice.textContent = sum;
+  }
+  
+  let itemNumber = 0; // itemIdの振り分け用変数
+  function addItem () { // itemの追加用関数 要素がクリックされたときに実行
+    if (itemNumber >= 50) { // item生成制限50個
+      $("#itemLimitAlert").show();
+      setTimeout(() => {
+        $("#itemLimitAlert").fadeOut();
+      }, 3000);
+      return;
+    }
+
+    const clone = $("#itemOriginal").clone(true); // 子要素も含めて(true)複製し，この要素を"clone"に代入
+
+    itemNumber++; // itemNumberのインクリメント
+    const settingId = `item${itemNumber}`; // settingIdに"item1"(itemNumber===1の場合)という文字列を格納
+    clone.attr({"id":settingId, "name": "item"}); // 複製した要素"clone"のidをsettingIdにnameを"item"に格納された文字列に設定
+
+    $("#itemWrapper").append(clone); // 複製した要素"clone"を"itemWrapper"の子要素として追加
+    $(clone).fadeIn();
+    console.log(`itemNumber: ${itemNumber}`); // ログの出力 デベロッパーツールのコンソールで確認可能(F12を押せば見れるよ)
+
+    const displayId = document.querySelector(`#item${itemNumber} span[name="itemId"]`);
+    displayId.textContent = itemNumber.toString().padStart(3, '0');
+
+    const batchValue = document.getElementById("applyTo").value;
+    //console.log(`batchValue: ${batchValue}`);
+    document.querySelector(`#item${itemNumber} select[name="applyTo"]`).value = batchValue;
+
+    const itemHeight = clone.get(0).getBoundingClientRect().height;
+    console.log(`itemHeight: ${itemHeight}`);
+    scrollBy(0, itemHeight + 10);
+  }
+    
+  $(".delete").click(function () { // itemの削除用関数 実行時，引数をitemとして取得
+    const removingItem = $(this).parent();
+    removingItem.fadeOut(() => { // 要素をフェードアウト後に以降を実行
+      removingItem.remove(); // 要素を削除
+
+      const itemElements = document.getElementsByName("item"); // nameが"item"の要素を配列で取得([0],[1],[2],...)
+      itemNumber = itemElements.length; // itemNumberを改めて設定(配列の長さ)
+      for (let j = 0; j < itemElements.length; j++) { // nameが"item"の要素の数だけ繰り返し IDを振りなおす
+        const nowId = j+1;
+        itemElements[j].id = `item${nowId}`; // IDを"item1"などに設定
+        const displayId = document.querySelector(`#item${nowId} span[name="itemId"]`);
+        displayId.textContent = nowId.toString().padStart(3, '0');
+        //console.log(`[${j}] = itemId: ${itemElements[j].id}`); // ログの出力
+      }
+      console.log(`${itemElements.length}items exist!`); // ログの出力
+      recalc();
+    });
+  });
+
+  let existEmpty = false;
+
+  $("#confirm").click(() => {
+    scrollTo(0, 0);
+
+    if (itemNumber <= 0) {
+      console.log("No item exist...")
+      $("#noItemExist").show();
+      $("#emptyAlert").hide();
+      $("#finalCheck").hide();
+      $("#confirm").css("display", "inline-block");
+      $("#modify").hide();
+      $("#submit").hide();
+      return;
+    }
+
+    existEmpty = false;
+    emptyCheck(0,$("#name"));
+
+    const batchRetailer = document.querySelector("#retailerSwitch .toggleSwitch").classList.contains("left");
+    if (batchRetailer) {
+      emptyCheck(0,$("#retailer"));
+    }
+
+    const batchPurpose = document.querySelector("#purposeSwitch .toggleSwitch").classList.contains("left");
+    if (batchPurpose) {
+      emptyCheck(0,$("#purpose"));
+    }
+
+    $(".item").not("#itemOriginal").find("input").each((index, element) => {
+      const includingReduction = document.querySelector("#reductionSwitch .toggleSwitch").classList.contains("right");
+      if (!includingReduction && element.getAttribute("name") === "reduction") {
+        return true;
+      }
+      emptyCheck(index, element);
+    });
+
+    if (existEmpty === false) {
+      console.log("emptyCheck passed!");
+      document.querySelector("form").setAttribute("inert", true);
+      $("#formWrapper").addClass("inert");
+      $("#noItemExist").hide();
+      $("#emptyAlert").hide();
+      $("#finalCheck").show();
+      $("#confirm").hide();
+      $("#modify").css("display", "inline-block");
+      $("#submit").css("display", "inline-block");
+    }
+    else {
+      console.log("empty input detected");
+      $("#noItemExist").hide();
+      $("#emptyAlert").show();
+      $("#finalCheck").hide();
+      $("#confirm").css("display", "inline-block");
+      $("#modify").hide();
+      $("#submit").hide();
+    }
+  });
+
+  function emptyCheck (index, element) {
+    if ($(element).val() === "") {
+      //console.log(element);
+      existEmpty = true;
+      $(element).addClass("inputAlert");
+    }
+    else {
+      $(element).removeClass("inputAlert");
+    }
+  }
+
+  $("#modify").click(() => {
+    document.querySelector("form").removeAttribute("inert");
+    $("#formWrapper").removeClass("inert");
+    $("#finalCheck").hide();
+    $("#confirm").css("display", "inline-block");
+    $("#modify").hide();
+    $("#submit").hide();
+  });
+
+  $("#submit").click(submit);
+
+  function submit () {
+    $("html, body").css({"overflow": "hidden", "height": "100%"});
+    $("#fullOverlay").show();
+    $("#sendingAnimation").show();
+    $("#successMessages").hide();
+    $("#failureMessages").hide();
+
+    console.log(`${itemNumber}items exist!`); // ログの出力
+    
+    const name = document.getElementById("name");
+    const retailer = document.getElementsByName("retailer");
+    const applyTo = document.getElementsByName("applyTo");
+    const purpose = document.getElementsByName("purpose");
+    const product = document.getElementsByName("product");
+    const unitPrice = document.getElementsByName("unitPrice");
+    const quantity = document.getElementsByName("quantity");
+    const tax = document.getElementsByName("tax");
+    const itemPrice = document.getElementsByName("itemPrice");
+    const reduction = document.getElementsByName("reduction");
+    const otherCosts = document.getElementById("otherCosts");
+
+    let records = new Array();
+    for (let i = 1; i <= itemNumber; i++) {
+      let taxValue = tax[i].textContent ?? "";
+      if (taxValue === "0") {
+        taxValue = ""; // "0"と表記されるのを防ぐ
+      }
+      let otherCostsValue = "";
+      if (i === 1) {
+        otherCostsValue = otherCosts.value ?? ""; // 1個目のアイテムに加算
+      }
+
+      let item = new Object();
+      item.name = name.value;
+      item.retailer = retailer[i].value;
+      item.applyTo = applyTo[i].value;
+      item.purpose = purpose[i].value;
+      item.product = product[i].value;
+      item.unitPrice = unitPrice[i].value;
+      item.quantity = quantity[i].value;
+      item.tax = taxValue;
+      item.itemPrice = itemPrice[i].textContent;
+      item.reduction = reduction[i].value ?? "";
+      item.otherCosts = otherCostsValue;
+      
+      records.push(item);
+    }
+    console.log(records);
+    google.script.run
+      .withSuccessHandler(result)
+      .addData(records);
+  }
+
+  function fullOverlayTest () {
+    $("html, body").css({"overflow": "hidden", "height": "100%"});
+    $("#fullOverlay").show();
+    $("#sendingAnimation").show();
+    $("#successMessages").hide();
+    $("#failureMessages").hide();
+  }
+
+  function result (response) {
+    $("#sendingAnimation").hide();
+    console.log(response);
+    if (response >= 0) {
+      $("#successMessages").fadeIn();
+    }
+    else {
+      $("#failureMessages").fadeIn();
+    }
+  }
+
+  $("#back").click(() => {
+    $("html, body").css({"overflow": "visible", "height": "auto"});
+    $("#fullOverlay").hide();
+    $("#sendingAnimation").hide();
+    $("#successMessages").hide();
+    $("#failureMessages").hide();
+  });
+
+  $("#retry").click(submit);
+
+  $("#clearpage").click(() => {
+    $("html, body").css({"overflow": "visible", "height": "auto"});
+    $("#fullOverlay").hide();
+    $("#sendingAnimation").hide();
+    $("#successMessages").hide();
+    $("#failureMessages").hide();
+    document.querySelector("form").removeAttribute("inert");
+    $("#formWrapper").removeClass("inert");
+    $("#finalCheck").hide();
+    $("#confirm").css("display", "inline-block");
+    $("#modify").hide();
+    $("#submit").hide();
+
+    if($("#retailerSwitch .toggleSwitch").hasClass("right")) {
+      classSwitcher(document.getElementById("retailerSwitch"));
+    }
+    if($("#applyToSwitch .toggleSwitch").hasClass("right")) {
+      classSwitcher(document.getElementById("applyToSwitch"));
+    }
+    if($("#purposeSwitch .toggleSwitch").hasClass("right")) {
+      classSwitcher(document.getElementById("purposeSwitch"));
+    }
+    if($("#taxRateSwitch .toggleSwitch").hasClass("right")) {
+      classSwitcher(document.getElementById("taxRateSwitch"));
+    }
+    if($("#reductionSwitch .toggleSwitch").hasClass("right")) {
+      classSwitcher(document.getElementById("reductionSwitch"));
+    }
+    if($("#adjustSwitch .toggleSwitch").hasClass("right")) {
+      classSwitcher(document.getElementById("adjustSwitch"));
+    }
+
+    const items = document.querySelectorAll(".item");
+    items.forEach((item) => {
+      if (item.id === "itemOriginal") return;
+      item.remove();
+    });
+    itemNumber = Number(0);
+
+    const resetValue = $("#applyTo option:first").val() ?? "";
+    $("#applyTo").val(resetValue);
+    $("#retailer").val("");
+    $("#purpose").val("");
+    $("#otherCosts").val("");
+
+    addItem();
+    recalc();
+  });
+
+  function clearToggle () {
+
+  }
+
+  addEventListener("keyup", recalc);
+  addEventListener("click", recalc);
+  addEventListener("change", recalc);
+
+  $(function () { // 読み込み時1回だけ実行
+    $("#modify").hide();
+    $("#submit").hide();
+    google.script.run
+      .withSuccessHandler((data) => {
+        SpreadSheetReadOnly = data.ssReadOnly;
+        ApplyToList = data.applyTo;
+
+        makeApplyToOption();
+        makeQuantityOption();
+        makeTaxRateOption();
+        makeAdjustOption();
+        addItem();
+        scrollTo(0, 0);
+
+      }).constData();
+  });
+</script>
