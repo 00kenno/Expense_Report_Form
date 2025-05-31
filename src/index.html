@@ -1,0 +1,123 @@
+<!--フォーム本体-->
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <base target="_top">
+    <?!= include('style'); ?>
+  </head>
+  <main>
+    <body>
+      <svg width='210' height='90' viewBox="0 0 350 150" xmlns='http://www.w3.org/2000/svg' style="display:block; margin:20px auto;"><g style='display:inline'><path style='fill:#000;fill-opacity:1;stroke:#000;stroke-width:.475027;stroke-opacity:1' d='M434 252s48 12 107 35c12 5 40 18 31 29-8 10-30 14-48 16l9-9c3-3 6-6 8-9 2-4-1-5-4-3l-3 1c-1 1-3 2-5 3l-4-16-3-6h-10l-15 32h10l2-8h13c0 4-3 5-5 6-5 4-11 7-17 11-29 3-60 3-111 2-31 0-73-2-107-4 1-5 1-11 1-11s-9 4-13 11c-11-1-30-2-30-2s13 1 29 2c-3 7-11 31-9 46 1 8 6 17 16 16 11-1 4-13 8-19 2-2 10 0 13 0 1 3 7 2 10 2 10 1 20 0 29 2 7 1 13 3 20 3 4 0 10-2 13 0 5 2 9 6 14 8s10 3 15 5c2 2 3 6 6 6s7-2 10-2c9 1 18 1 27 1 4 0 8 1 12-1 3-1 0-4-2-5-4-4-8-9-14-10 0-3 3-3 6-4 6-1 12-3 17-5 18-6 33-18 47-30 5-3 9-7 14-11 25-3 52-8 59-19 13-19-19-30-51-39-66-20-95-24-95-24zm-200 11v12l28 2-3 31v10h22l2-38 27 2v-12zm110 11c-1 0-3 0-5 1-8 1-15 3-21 8-7 6-7 19-1 27 10 11 24 13 38 11 16-2 32-19 20-35-7-8-19-12-31-11zm44 6-2 42h14v-16c11 0 19 5 19 16l13 1c0-6-5-16-11-19v-1c2-1 6-1 8-3 5-6 0-14-6-16-10-5-24-3-35-4zm-42 4c6 0 12 1 16 6 6 9-2 21-12 23-6 0-14-2-17-6-6-9 0-22 10-23h3zm95 1-2 37 11 1 3-38zm36 3c-9 0-17 4-19 14-1 6 1 13 5 18 10 9 27 6 32-7l-10-1c-1 6-10 7-14 3-7-6-3-22 8-20 4 0 5 4 7 5 2 2 6 1 9 1 0-7-8-11-14-12h-4zm-75 1h7c2 0 4 1 5 1 4 1 6 4 3 7-2 2-13 2-15 0-1-2 0-6 0-8zm116 10 2 12h-8zm-236 34c30 2 69 4 100 5 50 0 94 0 115-1-5 3-10 7-14 9-10 7-20 13-30 19-6 3-13 9-20 11-4 1-9 3-12 3s-6-2-8-2c-6-1-14-2-20-2-4 0-8-1-12 0-2 0-2 2-5 2-5 0-10-2-15-3-15-4-28-7-41-15-6-4-13-7-18-13-2-2-3-6-6-8 1 14 12 22 22 29 5 2 11 4 14 8-5-2-18 2-21-2-3 0-5 0-7-2 4 0 10 0 14-2v-1h-24c-2 3-11 3-12-1-2-11 0-29 0-34z' transform='translate(-233.5 -251.506)'/></g></svg>
+      <h1 id="title"><?= Title ?></h1>
+      <p class="alert" id="noItemExist">アイテムが追加されていません</p>
+      <p class="alert" id="emptyAlert">赤枠の領域が未入力です</p>
+      <p class="alert" id="finalCheck">入力内容を確認してください</p>
+      <div id="formWrapper">
+        <form id="form">
+          <div id="header">
+            <div class="inputItem"><label>申請者</label><input type="text" id="name" placeholder="氏名を入力"></div>
+            <div class="inputItem">
+              <label>購入場所</label>
+              <div id="retailerSwitch" class="switchWrapper" onclick="classSwitcher(this)"><div class="toggleSwitch left"></div><span class="left selected">一括</span><span class="right">個別</span></div>
+              <input type="text" id="retailer" placeholder="購入場所を入力">
+            </div>
+            <div class="inputItem">
+              <label>申請先</label>
+              <div id="applyToSwitch" class="switchWrapper" onclick="classSwitcher(this)"><div class="toggleSwitch left"></div><span class="left selected">一括</span><span class="right">個別</span></div>
+              <select id="applyTo" class="option"></select>
+            </div>
+            <div class="inputItem">
+              <label>購入目的</label>
+              <div id="purposeSwitch" class="switchWrapper" onclick="classSwitcher(this)"><div class="toggleSwitch left"></div><span class="left selected">一括</span><span class="right">個別</span></div>
+              <input type="text" id="purpose" placeholder="購入目的を入力">
+            </div>
+            <div class="inputItem">
+              <label>税率計算</label> 
+              <div id="taxRateSwitch" class="switchWrapper" onclick="classSwitcher(this);"><div class="toggleSwitch left"></div><span class="left selected">税込</span><span class="right">税別</span></div>
+              <p class="description">税率計算の有効化</p>
+            </div>
+            <div class="inputItem">
+              <label>補正</label> 
+              <div id="adjustSwitch" class="switchWrapper" onclick="classSwitcher(this);"><div class="toggleSwitch left"></div><span class="left selected">なし</span><span class="right">あり</span></div>
+              <p class="description">税率計算時の金額補正</p>
+            </div>
+            <div class="inputItem">
+              <label>割引</label> 
+              <div id="reductionSwitch" class="switchWrapper" onclick="classSwitcher(this);"><div class="toggleSwitch left"></div><span class="left selected">なし</span><span class="right">あり</span></div>
+              <p class="description">割引の適用</p>
+            </div>
+          </div>
+          <hr class="thickLine">
+          <div id="itemWrapper">
+            <div id="itemOriginal" class="item">
+              <p class="itemId">ID: <span name="itemId">000</span></p>
+              <svg class="systemButton delete" viewBox="-50 -50 100 100">
+                <circle cx="0" cy="0" r="45" fill="white" stroke-width="5px" />
+                <path d="M 0 -30 L 0 30 M -30 0 L 30 0" stroke-width="10px" stroke-linecap="round" transform="rotate(45)" />
+              </svg>
+              <div class="itemHeader">
+                <div class="inputItem product"><span class="miniLabel">品名</span><input type="text" name="product" placeholder="品名を入力"></div>
+                <div class="inputItem retailer invisible"><span class="miniLabel">購入場所</span><input type="text" name="retailer" placeholder="購入場所を入力"></div>
+                <div class="inputItem applyTo invisible"><span class="miniLabel">申請先</span><select name="applyTo" class="option"></select></div>
+                <div class="inputItem purpose invisible"><span class="miniLabel">目的</span><input type="text" name="purpose" placeholder="購入目的を入力"></div>
+              </div>
+              <div class="inputWrapper">
+                <div class="inputItem unitPrice"><span class="miniLabel">単価</span><input type="number" name="unitPrice" placeholder="単価"></div>
+                <div class="inputItem quantity"><span class="miniLabel">個数</span><select name="quantity" class="option"></select></div>
+                <div class="inputItem taxRate invisible"><span class="miniLabel">税率</span><select name="taxRate" class="option"></select></div>
+                <div class="inputItem taxRate invisible"><span class="miniLabel">税</span><p class="price" name="tax">0</p></div>
+                <div class="inputItem adjust invisible"><span class="miniLabel">補正</span><select name="adjust" class="option"></select></div>
+                <div class="inputItem reduction invisible"><span class="miniLabel">割引</span><input type="number" name="reduction" placeholder="割引額"></label></div>
+                <div class="inputItem itemPrice"><span class="miniLabel">小計</span><p class="price" name="itemPrice">0</p></div>
+              </div>
+            </div>
+          </div>
+          <p class="alert" id="itemLimitAlert">これ以上増やせません！</p>
+          <svg class="systemButton add" viewBox="-50 -50 100 100" onclick="addItem()">
+            <circle cx="0" cy="0" r="45" fill="transparent" stroke-width="5px" />
+            <path d="M 0 -30 L 0 30 M -30 0 L 30 0" stroke-width="10px" stroke-linecap="round" />
+          </svg>
+          <hr class="thickLine">
+          <div class="inputItem otherCosts"><label>送料・電車賃・代引き手数料</label><input type="number" id="otherCosts" placeholder="その他経費"></div>
+        </form>
+      </div>
+      <div id="bottomFixed">
+        <div id="bottomContent">
+          <p class="totalPrice">合計申請額 &yen;<span class="price" id="totalPrice">0<span></p>
+          <div class="handleButtonWrapper">
+            <div class="handleButton" id="confirm"><p class="buttonLabel">確認</p></div>
+            <div class="handleButton" id="modify"><p class="buttonLabel">修正</p></div>
+            <div class="handleButton" id="submit"><p class="buttonLabel">送信</p></div>
+          </div>
+        </div>
+      </div>
+      <div id="fullOverlay">
+        <div id="overlayContent">
+          <div id="sendingAnimation"></div>
+          <div id="successMessages">
+            <div class="flexbox">
+              <p class="message">成功&#x2705;</p>
+              <div class="handleButtonWrapper">
+                <div class="handleButton" id="clearpage"><p class="buttonLabel">別の内容を送信</p></div>
+                <div class="handleButton" onclick="openSpreadSheet();"><p class="buttonLabel">スプシを確認</p></div>
+              </div>
+            </div>
+          </div>
+          <div id="failureMessages">
+            <div class="flexbox">
+              <p class="message">失敗&#x1f61e;</p>
+              <div class="handleButtonWrapper">
+                <div class="handleButton" id="back"><p class="buttonLabel">戻る</p></div>
+                <div class="handleButton" id="retry"><p class="buttonLabel">再送信</p></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <?!= include('script'); ?>
+    </body>    
+  </main>
+</html>
