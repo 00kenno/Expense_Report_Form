@@ -1,0 +1,376 @@
+<!--スタイルの設定-->
+
+<style>
+  :root {
+    font-family: sans-serif;
+    color: #333333;
+    font-size: 16px;
+  }
+  body {
+    margin: 0;
+  }
+  h1 {
+    font-size: 1.5rem;
+    text-align: center;
+  }
+  .price {
+    display: inline-block;
+    font-weight: bold;
+    min-width: 3rem;
+    border-bottom: solid 1px gray;
+    margin: 0.1rem;
+  }
+  #header {
+    margin: 0 auto;
+    max-width: 350px;
+  }
+  #header .inputItem {
+    display: flex;
+    align-items: center;
+  }
+  #header label {
+    display: inline-block;
+    width: 5rem;
+    border-bottom: solid 1px gray;
+    text-align: center;
+    margin-right: 0.5rem;
+    flex-shrink: 0;
+  }
+  input {
+    display: inline-block;
+    margin: 0.1rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    vertical-align: middle;
+  }
+  input[type="text"] {
+    text-align: left;
+  }
+  #header input {
+    flex: 1;
+    min-width: 0;
+  }
+  input[name="product"], input[name="purpose"] {
+    width: 10rem;
+  }
+  #header input {
+    margin-left: 0.1rem;
+  }
+  input[type="number"] {
+    text-align: right;
+  }
+  .item input[type="number"] {
+    width: 4rem;
+  }
+  input[type="number"]::-webkit-inner-spin-button,
+  input[type="number"]::-webkit-outer-spin-button {
+    margin: 0;
+    -webkit-appearance: none;
+    -moz-appearance: textfield;
+  }
+  select {
+    font-size: 1rem;
+    height: 1.5rem;
+    margin: auto 0.1rem;
+  }
+  select[type="number"] {
+		width: 5rem;
+		text-align: right;
+	}
+  select[name="applyTo"], #applyTo {
+    width: 8rem;
+    text-align: center;
+    flex-grow: 1;
+  }
+  input:disabled, select:disabled {
+    background-color: #BBBBBB;
+  }
+  .thickLine {
+    margin: 1rem auto;
+    background-color: silver;
+    height: 4px;
+    border: none;
+    border-radius: 2px;
+  }
+	.switchWrapper {
+		display: inline-block;
+		vertical-align: middle;
+		position: relative;
+		cursor: pointer;
+		user-select: none;
+		border: solid black 1px;
+		border-radius: 0.2rem;
+		font-size: 0.8rem;
+		height: 1.5rem;
+		width: 4.15rem;
+    margin: 0.1rem;
+    flex-shrink: 0;
+	}
+  .switchWrapper > span {
+		position: absolute;
+		top: 0.05rem;
+		display: inline-block;
+		text-align: center;
+		width: 2rem;
+		line-height: 1.4rem;
+		color: gray;
+		transition: 0.3s;
+  }
+	.toggleSwitch {
+		position: absolute;
+		top: 0.05rem;
+		border-radius: 0.2rem;
+		background-color: navy;
+		width: 2rem;
+		height: 1.4rem;
+		transition: 0.3s;
+	}
+  .left {
+		left: 0.05rem;
+	}
+	.right {
+		left: 2.1rem;
+	}
+	.selected {
+		color: white !important;
+	}
+  #formWrapper {
+    margin: 0 auto 50% auto;
+    max-width: 85%;
+    width: 800px;
+    padding: 1rem;
+    border: solid 1px gray;
+    border-radius: 1rem;
+  }
+  .inert {
+    border: double 5px gray !important;
+  }
+  .systemButton {
+    stroke: gray;
+    vertical-align: middle;
+		cursor: pointer;
+		user-select: none;
+    height: 2em;
+  }
+  .add {
+    display: block;
+    background-color: #DDDDDD;
+    border-radius: 0.5rem;
+    width: 100%;
+    padding: 0.5rem 0;
+    text-align: center;
+  }
+  .add:active {
+    stroke: white;
+    background-color: #AAAAAA;
+  }
+  .delete {
+		position: absolute;
+		top: 0.1rem;
+    right: 0.1rem;
+    width: 2em;
+  }
+  .delete:active {
+    stroke: crimson;
+  }
+  .itemHeader {
+    display: block;
+    position: relative;
+    margin: 0 2.5rem 0 5rem;
+  }
+  .item {
+		position: relative;
+    margin: 10px 0;
+    border: solid 1px black;
+    border-radius: 0.5rem;
+    display: none;
+  }
+  .itemId {
+    position: absolute;
+    margin: 0;
+    padding: 0;
+    top: 0.1rem;
+    left: 1rem;
+  }
+  .item .inputItem {
+    display: inline-block;
+    margin: 0.1rem auto;
+  }
+  .description {
+    font-size: 0.8rem;
+    margin: 0 0.5rem;
+  }
+  .miniLabel {
+    font-size: 1rem;
+  }
+  .inputItem {
+    margin: 0 auto;
+    vertical-align: middle;
+    line-height: 1.5;
+    //border: solid 1px black;
+  }
+  .inputWrapper {
+    text-align: right;
+    margin: 0 1rem 0 1rem;
+    border-top: solid 1px gray;
+  }
+  .invisible {
+    display: none !important;
+  }
+  .otherCosts {
+    text-align: center;
+  }
+  .otherCosts label {
+    border-bottom: solid 1px gray;
+    margin-right: 0.5rem;
+  }
+  #otherCosts {
+    max-width: 6rem;
+    margin: 0.5rem 0;
+  }
+  .totalPrice {
+    display: block;
+    font-size: 1.3rem;
+    font-weight: bold;
+    text-align: center;
+    margin: 10px auto;
+  }
+  #totalPrice {
+    text-align: right;
+    min-width: 5rem;
+  }
+  .handleButtonWrapper {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+  }
+  #successMessages .handleButtonWrapper {
+    flex-direction: column;
+  }
+  .handleButton {
+    min-height: 1.2rem;
+    margin: 10px;
+    border-radius: 0.5rem;
+    background-color: navy;
+    cursor: pointer;
+		user-select: none;
+  }
+  #bottomContent .handleButton {
+    width: 7rem;
+    box-shadow: 3px 3px 2px black;
+  }
+  #overlayContent .handleButton {
+    width: 15rem;
+    max-width: 40%;
+    box-shadow: 0 0 3px 3px white;
+  }
+  #successMessages .handleButton {
+    max-width: 90%;
+    margin: 10px auto;
+  }
+  .buttonLabel {
+    margin: auto;
+    text-align: center;
+    color: white;
+    margin: 0.5rem auto;
+  }
+  #bottomContent .buttonLabel {
+    font-size: 1.2rem;
+  }
+  #overlayContent .buttonLabel {
+    font-size: 1.5rem;
+  }
+  .alert {
+    width: 100%;
+    text-align: center;
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin: 0.5rem auto;
+    display: none;
+  }
+  #emptyAlert, #noItemExist {
+    color: red;
+  }
+  .inputAlert {
+    border: solid 2px red !important;
+  }
+  #bottomFixed {
+    display: block;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: white;
+    border-top: 1px solid gray;
+    z-index: 1000;
+  }
+  #bottomContent {
+    display: block;
+    margin: 0 auto 1rem auto;
+    text-align: center;
+  }
+  #fullOverlay {
+    display: none;
+    position: fixed;
+    left: -10%;
+    top: -10%;
+    width: 120%;
+    height: 120%;
+    background-color: rgba(0,0,0,.8);
+    z-index: 2147483647;
+  }
+  #overlayContent {
+    display: block;
+    margin: auto;
+    text-align: center;
+  }
+  #sendingAnimation {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform : translate(-50%,-50%);
+    transform : translate(-50%,-50%);
+    border: 15px solid white;
+    border-top: 15px solid rgba(0,0,0,0);
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    animation: spin 1s linear infinite;
+  }
+  @keyframes spin{
+    0%{
+      transform: translate(-50%, -50%) rotate(0deg);
+    }
+    100%{
+      transform: translate(-50%, -50%) rotate(360deg);
+    }
+  }
+  #successMessages, #failureMessages {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform : translate(-50%,-50%);
+    transform : translate(-50%,-50%);
+    justify-content: center;
+    width: 500px;
+    height: 500px;
+    max-width: 60%;
+    max-height: 60%;
+    border:1px solid white;
+    border-radius: 3rem;
+    display: none;
+  }
+  .flexbox {
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .message {
+    font-size: 3.5rem;
+    color: white;
+    text-align: center;
+  }
+</style>
