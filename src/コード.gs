@@ -12,10 +12,10 @@ let CategoryList = new Array();
 const Title = "経費申請フォーム";
 
 //修正可能箇所#2 部員全員が確認できる編集権限なしのスプシのリンクを張ってください．(ex."https://docs.google.com/spreadsheets/d/.../edit")
-const SpreadSheetReadOnly = "https://docs.google.com/spreadsheets/d/1GXHkYY11TYEoVEpn9P6SK67xp8hPObjvSZ2aYQUGBFA/edit";
+const SpreadSheetReadOnly = "https://docs.google.com/spreadsheets/d/.../edit";
   
 //修正可能箇所#3 役持ちなどに渡す編集権限ありのスプシのリンクを貼ってください．#2のリンクと同一でも可です．(ex."https://docs.google.com/spreadsheets/d/.../edit")
-const SpreadSheetReadWrite ="https://docs.google.com/spreadsheets/d/1hNTccHnZIeNa0oJqhMWadd-_1JuqICErMPNJ4KRdMfM/edit";
+const SpreadSheetReadWrite ="https://docs.google.com/spreadsheets/d/.../edit";
 
 //修正可能箇所#4 申請先のスプシの「シート名(ApplyTo)」と「項目(Category)」を追加してください．ただし，「シート名」は確実に「シートの名前」と一致している必要があります．
 
