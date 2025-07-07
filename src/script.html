@@ -6,6 +6,7 @@
 <script>
   let SpreadSheetReadOnly = "";
   let ApplyToList = "";
+  let CategoryList = "";
 
   function openSpreadSheet () {
     window.open(SpreadSheetReadOnly);
@@ -30,6 +31,31 @@
       option.setAttribute("value", applyTo);
       select.append(option);
     });
+  }
+
+  let itemNumber = 0; // itemIdの振り分け用変数
+
+  function makeCategory () {
+    const category = CategoryList;
+    for (let i = 1; i <= itemNumber; i++) {
+      const select = document.querySelector(`#item${i} .category select`);
+      const preSelectedIndex = select.selectedIndex;
+      const deleteOption = document.querySelectorAll(`#item${i} .category option`);
+      deleteOption.forEach((option, index) => {
+        option.remove();
+      });
+      const nowApplyTo = document.querySelector(`#item${i} .applyTo select`);
+      const nowCategory = category[nowApplyTo.selectedIndex];
+      nowCategory.forEach((nowCategory, index) => {
+        const categoryOption = document.createElement("option");
+        categoryOption.textContent = nowCategory;
+        categoryOption.setAttribute("value", nowCategory);
+        if (index === preSelectedIndex) {
+          categoryOption.setAttribute("selected", true);
+        }
+        select.append(categoryOption);
+      });
+    }
   }
 
   function makeQuantityOption () {
@@ -62,12 +88,15 @@
 
   function makeAdjustOption () {
     const select = document.getElementsByName("adjust")[0];
-  	for (let i = 0; i <= 5; i++) {
+  	for (let i = -1000; i <= 1000; i++) {
 			const option = document.createElement("option");
 		  option.setAttribute("value", i);
       if (i === 0) {
         option.textContent = `±${i}`;
         option.setAttribute("selected", true);
+      }
+      else if (i < 0) {
+        option.textContent = `${i}`;
       }
       else {
         option.textContent = `+${i}`;
@@ -157,9 +186,10 @@
     }
     sum += Number(otherCosts.value);
     totalPrice.textContent = sum;
+
+    makeCategory();
   }
   
-  let itemNumber = 0; // itemIdの振り分け用変数
   function addItem () { // itemの追加用関数 要素がクリックされたときに実行
     if (itemNumber >= 50) { // item生成制限50個
       $("#itemLimitAlert").show();
@@ -187,6 +217,7 @@
     document.querySelector(`#item${itemNumber} select[name="applyTo"]`).value = batchValue;
 
     const itemHeight = clone.get(0).getBoundingClientRect().height;
+    recalc();
     console.log(`itemHeight: ${itemHeight}`);
     scrollBy(0, itemHeight + 10);
   }
@@ -207,6 +238,10 @@
       }
       console.log(`${itemElements.length}items exist!`); // ログの出力
       recalc();
+
+      if (itemNumber === 0) {
+        addItem();
+      }
     });
   });
 
@@ -214,6 +249,7 @@
 
   $("#confirm").click(() => {
     scrollTo(0, 0);
+    $("input").removeClass("inputAlert");
 
     if (itemNumber <= 0) {
       console.log("No item exist...")
@@ -271,12 +307,8 @@
 
   function emptyCheck (index, element) {
     if ($(element).val() === "") {
-      //console.log(element);
       existEmpty = true;
       $(element).addClass("inputAlert");
-    }
-    else {
-      $(element).removeClass("inputAlert");
     }
   }
 
@@ -295,6 +327,7 @@
     $("html, body").css({"overflow": "hidden", "height": "100%"});
     $("#fullOverlay").show();
     $("#sendingAnimation").show();
+    $("#kill").show();
     $("#successMessages").hide();
     $("#failureMessages").hide();
 
@@ -303,6 +336,7 @@
     const name = document.getElementById("name");
     const retailer = document.getElementsByName("retailer");
     const applyTo = document.getElementsByName("applyTo");
+    const category = document.getElementsByName("category");
     const purpose = document.getElementsByName("purpose");
     const product = document.getElementsByName("product");
     const unitPrice = document.getElementsByName("unitPrice");
@@ -327,6 +361,7 @@
       item.name = name.value;
       item.retailer = retailer[i].value;
       item.applyTo = applyTo[i].value;
+      item.category = category[i].value;
       item.purpose = purpose[i].value;
       item.product = product[i].value;
       item.unitPrice = unitPrice[i].value;
@@ -347,6 +382,7 @@
   function fullOverlayTest () {
     $("html, body").css({"overflow": "hidden", "height": "100%"});
     $("#fullOverlay").show();
+    $("#kill").show();
     $("#sendingAnimation").show();
     $("#successMessages").hide();
     $("#failureMessages").hide();
@@ -354,6 +390,9 @@
 
   function result (response) {
     $("#sendingAnimation").hide();
+    $("#kill").hide();
+    $("#successMessages").hide();
+    $("#failureMessages").hide();
     console.log(response);
     if (response >= 0) {
       $("#successMessages").fadeIn();
@@ -367,16 +406,20 @@
     $("html, body").css({"overflow": "visible", "height": "auto"});
     $("#fullOverlay").hide();
     $("#sendingAnimation").hide();
+    $("#kill").hide();
     $("#successMessages").hide();
     $("#failureMessages").hide();
   });
 
   $("#retry").click(submit);
 
+  $("#kill").click(() => result(-1));
+
   $("#clearpage").click(() => {
     $("html, body").css({"overflow": "visible", "height": "auto"});
     $("#fullOverlay").hide();
     $("#sendingAnimation").hide();
+    $("#kill").hide();
     $("#successMessages").hide();
     $("#failureMessages").hide();
     document.querySelector("form").removeAttribute("inert");
@@ -422,10 +465,6 @@
     recalc();
   });
 
-  function clearToggle () {
-
-  }
-
   addEventListener("keyup", recalc);
   addEventListener("click", recalc);
   addEventListener("change", recalc);
@@ -433,16 +472,21 @@
   $(function () { // 読み込み時1回だけ実行
     $("#modify").hide();
     $("#submit").hide();
+    const marginBottom = document.getElementById("bottomFixed").offsetHeight + 10;
+    const main = document.querySelector("main");
+    main.style.padding = `0 0 ${marginBottom}px 0`;
     google.script.run
       .withSuccessHandler((data) => {
         SpreadSheetReadOnly = data.ssReadOnly;
         ApplyToList = data.applyTo;
+        CategoryList = data.category;
 
         makeApplyToOption();
         makeQuantityOption();
         makeTaxRateOption();
         makeAdjustOption();
         addItem();
+        recalc();
         scrollTo(0, 0);
 
       }).constData();
