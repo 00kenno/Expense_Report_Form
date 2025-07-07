@@ -62,6 +62,7 @@
                 <div class="inputItem product"><span class="miniLabel">品名</span><input type="text" name="product" placeholder="品名を入力"></div>
                 <div class="inputItem retailer invisible"><span class="miniLabel">購入場所</span><input type="text" name="retailer" placeholder="購入場所を入力"></div>
                 <div class="inputItem applyTo invisible"><span class="miniLabel">申請先</span><select name="applyTo" class="option"></select></div>
+                <div class="inputItem category"><span class="miniLabel">項目</span><select name="category" class="option"></select></div>
                 <div class="inputItem purpose invisible"><span class="miniLabel">目的</span><input type="text" name="purpose" placeholder="購入目的を入力"></div>
               </div>
               <div class="inputWrapper">
@@ -84,6 +85,10 @@
           <div class="inputItem otherCosts"><label>送料・電車賃・代引き手数料</label><input type="number" id="otherCosts" placeholder="その他経費"></div>
         </form>
       </div>
+      <div id="links">
+        <p><a href="<?= SpreadSheetReadOnly ?>" target="_blank" rel="noopener noreferrer">スプシはこちら</a><p>
+        <p><a href="https://github.com/00kenno/Expense_Report_Form" target="_blank" rel="noopener noreferrer">ソース(GitHub)</a></p>
+      </div>
       <div id="bottomFixed">
         <div id="bottomContent">
           <p class="totalPrice">合計申請額 &yen;<span class="price" id="totalPrice">0<span></p>
@@ -97,6 +102,7 @@
       <div id="fullOverlay">
         <div id="overlayContent">
           <div id="sendingAnimation"></div>
+          <div class="handleButton" id="kill"><p class="buttonLabel">停止</p></div>
           <div id="successMessages">
             <div class="flexbox">
               <p class="message">成功&#x2705;</p>
