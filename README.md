@@ -1,15 +1,18 @@
 # 経費精算申請フォーム
 
 ## 概要
-- 1回で複数項目を送信できるようにした改良版フォームです．
-- Googleスプレッドシートと直接接続します．
-- 項目選択（「ラジコン」「理大祭」など）は未実装です．実装は夏休み中を予定しています．
+- Googleスプレッドシートと直接接続する改良版フォームです．
+- 複数項目の送信，税率計算，申請先や購入場所の個別設定などに対応しています．
 > このリポジトリ内のdocsはGitHub Pagesで公開されており，フォームのファビコンはここから取得しています．
 
-## 既知の問題
-- アイテムが存在しない状況があり得る．
-- 一括入力欄の赤枠が外れない．
-- 「これ以上増やせません！」が黒字
+## 更新履歴
+- 2025-05-31:
+  - ファイルをアップロード．
+- 2025-07-07:
+  - 項目(Category)選択機能を実装．
+  - アイテムが常に1つ以上存在するように修正．
+  - 未入力欄の赤枠表示の問題を修正．
+  - 警告メッセージの色を修正．
 
 ## 引継ぎの方法
 
@@ -17,13 +20,13 @@
 |:--|:--|
 ||<img src="https://file.51pptmoban.com/d/file/2023/06/04/b3925630992729172938c08655e5cfd0.jpg" style="max-height=500px;">|
 
-|1|スプレッドシートが存在するGoogleドライブを開く|
+|1|スプレッドシートの編集権限のあるアカウントでGoogleドライブを開く|
 |:--|:--|
 ||<img src="https://ssl.gstatic.com/images/branding/product/1x/drive_2020q4_48dp.png">**<a href="https://drive.google.com/drive/my-drive" target="_blank" rel="noopener noreferrer">Googleドライブ</a>**|
 
 |2|「新規」→「その他」→「Google Apps Script」から新しくプロジェクトを作成する|
 |:--|:--|
-||<img src="https://file.51pptmoban.com/d/file/2023/06/04/b3925630992729172938c08655e5cfd0.jpg" style="max-height=500px;">|
+||<img src="img/create_gas.png" style="max-height=500px;">|
 
 |3|「スクリプトを作成」を選択する|
 |:--|:--|
