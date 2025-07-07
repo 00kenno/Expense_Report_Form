@@ -19,7 +19,7 @@
 
 |1|スプレッドシートが存在するGoogleドライブを開く|
 |:--|:--|
-||<img src="https://file.51pptmoban.com/d/file/2023/06/04/b3925630992729172938c08655e5cfd0.jpg" style="max-height=500px;">|
+||<img src="https://ssl.gstatic.com/images/branding/product/1x/drive_2020q4_48dp.png">**[Googleドライブ](https://drive.google.com/drive/my-drive)**|
 
 |2|「新規」→「その他」→「Google Apps Script」から新しくプロジェクトを作成する|
 |:--|:--|
