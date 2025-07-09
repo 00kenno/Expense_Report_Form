@@ -82,6 +82,14 @@
 |:--|:--|
 ||<img src="img/19_paste_script_html.png" style="max-height:500px;max-width:600px;">|
 
+|15|「Ctrl+S」もしくはフロッピーディスクのボタンをクリックしてプロジェクトを保存する|
+|:--|:--|
+||<img src="img/20_save_script_html.png" style="max-height:500px;max-width:600px;">|
+
+|16|「HTML」を追加し，名前を「style」に変更（ 「style.html」が作成される）|
+|:--|:--|
+||<img src="img/21_created_style_html.png" style="max-height:500px;max-width:600px;">|
+
 |12|「種類の選択」の右側にある歯車マークをクリックし「ウェブアプリ」を選択する|
 |:--|:--|
 ||<img src="https://file.51pptmoban.com/d/file/2023/06/04/b3925630992729172938c08655e5cfd0.jpg" style="max-height:500px;max-width:600px;">|
