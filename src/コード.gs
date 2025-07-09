@@ -1,7 +1,9 @@
 /*
-26代電装班長 永田賢之介
+鳥科26代電装班長 永田賢之介
 X: https://x.com/MeganeKinoko_
 */
+
+//コード.gs
 
 let ApplyToList = new Array();
 let CategoryList = new Array();
@@ -17,47 +19,36 @@ const SpreadSheetReadOnly = "https://docs.google.com/spreadsheets/d/.../edit";
 //修正可能箇所#3 役持ちなどに渡す編集権限ありのスプシのリンクを貼ってください．#2のリンクと同一でも可です．(ex."https://docs.google.com/spreadsheets/d/.../edit")
 const SpreadSheetReadWrite ="https://docs.google.com/spreadsheets/d/.../edit";
 
-//修正可能箇所#4 申請先のスプシの「シート名(ApplyTo)」と「項目(Category)」を追加してください．ただし，「シート名」は確実に「シートの名前」と一致している必要があります．
+//修正可能箇所#4 申請先のスプシの「シート名(ApplyTo)」と「項目(Category)」を追加してください．ただし，「シート名」は確実にスプシの「シートの名前」と一致している必要があります．
 
 //初期値: 
 //ApplyToList.push("運営");
 //CategoryList.push(["理大祭", "鳥コン", "新歓", "TF", "外部イベント", "ラジコン", "その他"]);
-ApplyToList.push("運営");
-CategoryList.push(["理大祭", "鳥コン", "新歓", "TF", "外部イベント", "ラジコン", "その他"]);
-
-//初期値: 
 //ApplyToList.push("設計");
 //CategoryList.push(["桁", "その他"]);
-ApplyToList.push("設計");
-CategoryList.push(["桁", "その他"]);
-
-//初期値: 
 //ApplyToList.push("フラチ");
 //CategoryList.push(["ハング", "レンタカー", "その他"]);
-ApplyToList.push("フラチ");
-CategoryList.push(["ハング", "レンタカー", "その他"]);
-
-//初期値: 
 //ApplyToList.push("翼班");
 //CategoryList.push(["木材", "スタイロ", "プランク", "フィルム", "消耗品", "レーザーカット", "その他"]);
-ApplyToList.push("翼班");
-CategoryList.push(["木材", "スタイロ", "プランク", "フィルム", "消耗品", "レーザーカット", "その他"]);
-
-//初期値: 
 //ApplyToList.push("接合班");
 //CategoryList.push(["かんざし", "積層", "治具", "木フラ", "工具・ボルトなど", "尾翼", "ウィングレット", "消耗品", "その他"]);
-ApplyToList.push("接合班");
-CategoryList.push(["かんざし", "積層", "治具", "木フラ", "工具・ボルトなど", "尾翼", "ウィングレット", "消耗品", "その他"]);
-
-//初期値: 
 //ApplyToList.push("コクピ班");
 //CategoryList.push(["キャノピー", "御神体", "カウル", "フレーム", "ハッチ", "消耗品", "その他"]);
-ApplyToList.push("コクピ班");
-CategoryList.push(["キャノピー", "御神体", "カウル", "フレーム", "ハッチ", "消耗品", "その他"]);
-
-//初期値: 
 //ApplyToList.push("電装班");
 //CategoryList.push(["基盤", "センサ類", "サーボ関連", "ケーブル類", "コネクタ類", "消耗品", "その他電子部品", "その他"]);
+
+ApplyToList.push("運営");
+CategoryList.push(["理大祭", "鳥コン", "新歓", "TF", "外部イベント", "ラジコン", "その他"]);
+ApplyToList.push("設計");
+CategoryList.push(["桁", "その他"]);
+ApplyToList.push("フラチ");
+CategoryList.push(["ハング", "レンタカー", "その他"]);
+ApplyToList.push("翼班");
+CategoryList.push(["木材", "スタイロ", "プランク", "フィルム", "消耗品", "レーザーカット", "その他"]);
+ApplyToList.push("接合班");
+CategoryList.push(["かんざし", "積層", "治具", "木フラ", "工具・ボルトなど", "尾翼", "ウィングレット", "消耗品", "その他"]);
+ApplyToList.push("コクピ班");
+CategoryList.push(["キャノピー", "御神体", "カウル", "フレーム", "ハッチ", "消耗品", "その他"]);
 ApplyToList.push("電装班");
 CategoryList.push(["基盤", "センサ類", "サーボ関連", "ケーブル類", "コネクタ類", "工具", "消耗品", "その他電子部品", "その他"]);
 
