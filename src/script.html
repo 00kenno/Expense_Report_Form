@@ -376,7 +376,7 @@
     console.log(records);
     google.script.run
       .withSuccessHandler(result)
-      .addData(records);
+      .submit(records);
   }
 
   function fullOverlayTest () {
@@ -489,6 +489,6 @@
         recalc();
         scrollTo(0, 0);
 
-      }).constData();
+      }).initializeData();
   });
 </script>
