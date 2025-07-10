@@ -20,7 +20,7 @@
 |:--|:--|
 ||<img src="https://file.51pptmoban.com/d/file/2023/06/04/b3925630992729172938c08655e5cfd0.jpg" style="max-height:500px;max-width:600px;">|
 
-|1|スプレッドシートの編集権限のあるアカウントでGoogleドライブを開く|
+|1|会計用アカウントでGoogleドライブを開く|
 |:--|:--|
 ||<img src="https://ssl.gstatic.com/images/branding/product/1x/drive_2020q4_48dp.png">**<a href="https://drive.google.com/drive/my-drive" target="_blank" rel="noopener noreferrer">Googleドライブ</a>**|
 
@@ -90,14 +90,64 @@
 |:--|:--|
 ||<img src="img/21_created_style_html.png" style="max-height:500px;max-width:600px;">|
 
-|12|「種類の選択」の右側にある歯車マークをクリックし「ウェブアプリ」を選択する|
+|17|GitHub（<a href="https://github.com/00kenno/Expense_Report_Form/tree/main/src" target="_blank" rel="noopener noreferrer">/src</a>）から「style.html」の内容をコピーする|
 |:--|:--|
-||<img src="https://file.51pptmoban.com/d/file/2023/06/04/b3925630992729172938c08655e5cfd0.jpg" style="max-height:500px;max-width:600px;">|
+||<img src="img/22_copy_style_html.png" style="max-height:500px;max-width:600px;">|
 
-|13|「説明」に新しい説明文（「1回目のデプロイ」など）を追加する|
+|18|「style.html」の内容を全て消去し，コピーした内容を貼り付ける|
 |:--|:--|
-||<img src="https://file.51pptmoban.com/d/file/2023/06/04/b3925630992729172938c08655e5cfd0.jpg" style="max-height:500px;max-width:600px;">|
+||<img src="img/23_paste_style_html.png" style="max-height:500px;max-width:600px;">|
 
-|14|「アクセスできるユーザー」を「全員」に変更する|
+|19|「Ctrl+S」もしくはフロッピーディスクのボタンをクリックしてプロジェクトを保存する|
 |:--|:--|
-||<img src="https://file.51pptmoban.com/d/file/2023/06/04/b3925630992729172938c08655e5cfd0.jpg" style="max-height:500px;max-width:600px;">|
+||<img src="img/24_save_style_html.png" style="max-height:500px;max-width:600px;">|
+
+|20|コードの準備完了|
+|:--|:--|
+||<img src="img/25_code_ready.png" style="max-height:500px;max-width:600px;">|
+
+|21|「デプロイ」から「新しいデプロイ」をクリックする|
+|:--|:--|
+||<img src="img/26_new_deploy.png" style="max-height:500px;max-width:600px;">|
+
+|22|「種類の選択」の右側にある歯車マークをクリックし，「ウェブアプリ」をクリックする|
+|:--|:--|
+||<img src="img/27_select_deploy_type.png" style="max-height:500px;max-width:600px;">|
+
+|23|「説明」に新しい説明文（ここでは「〇〇代会計への引継ぎ」 ）を追加する|
+|:--|:--|
+||<img src="img/28_enter_deploy_message.png" style="max-height:500px;max-width:600px;">|
+
+|24|「アクセスできるユーザー」を「全員」に変更する|
+|:--|:--|
+||<img src="img/29_user_access.png" style="max-height:500px;max-width:600px;">|
+
+|25|「デプロイ」をクリックする|
+|:--|:--|
+||<img src="img/30_confirm_deploy.png" style="max-height:500px;max-width:600px;">|
+
+|26|「アクセスを承認」をクリックする|
+|:--|:--|
+||<img src="img/31_apply_access.png" style="max-height:500px;max-width:600px;">|
+
+|27|会計用アカウントを選択|
+|:--|:--|
+||<img src="img/32_select_account.png" style="max-height:500px;max-width:600px;">|
+
+|28|「Google hasn’t verified this app」と表示される画面で，左下の「Advanced」をクリックする|
+|:--|:--|
+||<img src="img/33_enter_advanced.png" style="max-height:500px;max-width:600px;">|
+
+|29|開いたメニューにある「Go to（設定したプロジェクト名）」（ここでは「Go to マイフォーム」 ）をクリックする|
+|:--|:--|
+||<img src="img/34_go_to_project.png" style="max-height:500px;max-width:600px;">|
+
+|30|「Allow」をクリックし，Googleアカウントへのアクセスを承認する|
+|:--|:--|
+||<img src="img/35_allow_access.png" style="max-height:500px;max-width:600px;">|
+
+|31|「完了」をクリックし，デプロイを完了する|
+|:--|:--|
+||<img src="img/36_complete_deploy.png" style="max-height:500px;max-width:600px;">|
+
+
