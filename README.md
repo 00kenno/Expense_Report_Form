@@ -17,8 +17,9 @@
   - ライブラリのデプロイを利用する形式に変更．
 
 ## 引継ぎの方法
-|0|会計用アカウントでGoogleドライブを開く|
+|0|Googleドライブを開く|
 |:--|:--|
+||会計用アカウントでログインしてください．|
 ||<img src="https://ssl.gstatic.com/images/branding/product/1x/drive_2020q4_48dp.png">**<a href="https://drive.google.com/drive/my-drive" target="_blank" rel="noopener noreferrer">Googleドライブ</a>**|
 
 ---
@@ -205,13 +206,13 @@ function doGet () {
 ||<img src="img/17_user_access.png" style="max-height:500px;max-width:600px;">|
 ||「アクセスを承認」をクリックしてください．|
 ||<img src="img/18_apply_access.png" style="max-height:500px;max-width:600px;">|
-||会計用アカウントを選択|
+||会計用アカウントを選択してください．|
 ||<img src="img/19_select_account.png" style="max-height:500px;max-width:600px;">|
-||「Google hasn’t verified this app」と表示される画面で，左下の「Advanced」をクリックする|
+||「Google hasn’t verified this app」と表示される画面で，左下の「Advanced」をクリックしてください．|
 ||<img src="img/20_enter_advanced.png" style="max-height:500px;max-width:600px;">|
-||開いたメニューにある「Go to（設定したプロジェクト名）」（ここでは「Go to マイフォーム」 ）をクリックする|
+||開いたメニューにある「Go to（設定したプロジェクト名）」（ここでは「Go to マイフォーム」 ）をクリックしてください．|
 ||<img src="img/21_go_to_project.png" style="max-height:500px;max-width:600px;">|
-||「Allow」をクリックし，Googleアカウントへのアクセスを承認する|
+||「Allow」をクリックし，Googleアカウントへのアクセスを承認してください．|
 ||<img src="img/22_allow_access.png" style="max-height:500px;max-width:600px;">|
 ||デプロイが更新されます．ウェブアプリのURLからフォームにアクセスできます．|
 ||<img src="img/23_complete_deploy.png" style="max-height:500px;max-width:600px;">|
