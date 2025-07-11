@@ -8,7 +8,8 @@ function initializeData () {
   //修正可能箇所#2 スプシのリンクを張ってください．(ex."https://docs.google.com/spreadsheets/d/.../edit")
   ExpenseReportForm.setSpreadSheetUrl("https://docs.google.com/spreadsheets/d/.../edit");
 
-  //修正可能箇所#3 申請先のスプシの「シート名(ApplyTo)」と「項目(Category)」を追加してください．ただし，「シート名」は確実にスプシの「シートの名前」と一致している必要があります．
+  //修正可能箇所#3 申請先のスプシの「シート名(ApplyTo)」と「項目(Category)」を追加してください．
+  //ただし，「シート名」は確実にスプシの「シートの名前」と一致している必要があります．
   ExpenseReportForm.addApplyTo("運営");
   ExpenseReportForm.addCategory("運営", "理大祭");
   ExpenseReportForm.addCategory("運営", "鳥コン");
