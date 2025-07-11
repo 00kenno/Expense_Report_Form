@@ -4,12 +4,12 @@
 <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.5/dist/jquery.validate.js"></script>
 
 <script>
-  let SpreadSheetReadOnly = "";
+  let SpreadSheetUrl = "";
   let ApplyToList = "";
   let CategoryList = "";
 
   function openSpreadSheet () {
-    window.open(SpreadSheetReadOnly);
+    window.open(SpreadSheetUrl);
   }
 
   function makeApplyToOption () {
@@ -477,7 +477,7 @@
     main.style.padding = `0 0 ${marginBottom}px 0`;
     google.script.run
       .withSuccessHandler((data) => {
-        SpreadSheetReadOnly = data.ssReadOnly;
+        SpreadSheetUrl = data.ssUrl;
         ApplyToList = data.applyTo;
         CategoryList = data.category;
 

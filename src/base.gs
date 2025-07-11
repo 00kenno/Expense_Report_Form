@@ -6,8 +6,7 @@ X: https://x.com/MeganeKinoko_
 //base.gs
 
 let Title = "";
-let SpreadSheetReadOnly = "";
-let SpreadSheetReadWrite ="";
+let SpreadSheetUrl = "";
 let ApplyToList = [];
 let CategoryList = [];
 
@@ -15,12 +14,8 @@ function setTitle (title) {
   Title = title;
 }
 
-function setSpreadSheetReadOnly (urlParameter) {
-  SpreadSheetReadOnly = urlParameter;
-}
-
-function setSpreadSheetReadWrite (urlParameter) {
-  SpreadSheetReadWrite = urlParameter;
+function setSpreadSheetUrl (urlParameter) {
+  SpreadSheetUrl = urlParameter;
 }
 
 function addApplyTo (applyTo) {
@@ -49,14 +44,14 @@ function include (filename) {
 
 function syncData () {
   return {
-    ssReadOnly: SpreadSheetReadOnly,
+    ssUrl: SpreadSheetUrl,
     applyTo: ApplyToList,
     category: CategoryList
   };
 }
 
 function addData (records) { // スプレッドシートに値を送信する関数
-  var ss = SpreadsheetApp.openByUrl(SpreadSheetReadWrite); // スプレッドシートをURLで取得
+  var ss = SpreadsheetApp.openByUrl(SpreadSheetUrl); // スプレッドシートをURLで取得
   const lock = LockService.getScriptLock();
   if (lock.tryLock(10000)) {
     for (let i = 0; i < records.length; i++) {
