@@ -17,127 +17,202 @@
   - ライブラリのデプロイを利用する形式に変更．
 
 ## 引継ぎの方法
-
-|N|CAPTION|
-|:--|:--|
-||<img src="https://file.51pptmoban.com/d/file/2023/06/04/b3925630992729172938c08655e5cfd0.jpg" style="max-height:500px;max-width:600px;">|
-
----
-
 |0|会計用アカウントでGoogleドライブを開く|
 |:--|:--|
 ||<img src="https://ssl.gstatic.com/images/branding/product/1x/drive_2020q4_48dp.png">**<a href="https://drive.google.com/drive/my-drive" target="_blank" rel="noopener noreferrer">Googleドライブ</a>**|
 
 ---
 
-|1|スプレッドシートを準備する|
+|1|スプレッドシートの準備|
 |:--|:--|
-||ヘッダーを準備することを勧める．|
-
-|タイムスタンプ|名前|項目|品名|単価|個数|単価×個数|別途消費税|送料など|割引|請求金額|購入目的|
-|--|--|--|--|--|--|--|--|--|--|--|--|
-|-|-|-|-|-|-|-|-|-|-|-|-|
-
----
-
-|2|「新規」→「その他」→「Google Apps Script」から新しくプロジェクトを作成する|
-|:--|:--|
-||<img src="img/01_create_gas.png" style="max-height:500px;max-width:600px;">|
-
----
-
-|3|「スクリプトを作成」を選択する|
-|:--|:--|
-||<img src="img/02_create_script_confirm.png" style="max-height:500px;max-width:600px">|
-
----
-
-|4|「無題のプロジェクト」の名前を変更する|
-|:--|:--|
-||<img src="img/03_click_to_change_name.png" style="max-height:500px;max-width:600px;">|
-||<img src="img/04_change_name.png" style="max-height:500px;max-width:600px;">|
-
----
-
-|5|「ライブラリ」の右にある「＋」をクリックする|
-|:--|:--|
+||画像下部のバーからシートを必要数作成し，適当なシート名に変更してください．作成したシートのシート名は後で使用します．|
+||<img src="img/01_spreadsheet_preparation.png" style="max-height:500px;max-width:600px;">|
 |||
 
+また，すべてのシートに以下のようなヘッダーを準備してください．
+|タイムスタンプ|名前|項目|品名|単価|個数|単価×個数|別途消費税|送料・電車賃・代引き手数料|割引|請求金額|購入場所|購入目的|
+|--|--|--|--|--|--|--|--|--|--|--|--|--|
+|-|-|-|-|-|-|-|-|-|-|-|-|-|
+
 ---
 
-|6|スクリプトIDを入力する|
+|2|新しいプロジェクトの作成|
 |:--|:--|
-|||
+||「新規」→「その他」→「Google Apps Script」をクリックしてください．|
+||<img src="img/02_create_gas.png" style="max-height:500px;max-width:600px;">|
+||「スクリプトを作成」をクリックしてください．|
+||<img src="img/03_create_script_confirm.png" style="max-height:500px;max-width:600px">|
 
-スクリプトIDはこちらからコピーできます．
+---
+
+|3|プロジェクト名の変更|
+|:--|:--|
+||「無題のプロジェクト」をクリックしてください．|
+||<img src="img/04_click_to_change_name.png" style="max-height:500px;max-width:600px;">|
+||プロジェクト名を変更し，「名前を変更」をクリックしてください．|
+||<img src="img/05_change_project_name.png" style="max-height:500px;max-width:600px;">|
+
+---
+
+|4|ライブラリの追加|
+|:--|:--|
+||「ライブラリ」の右にある「＋」をクリックしてください．|
+||<img src="img/06_add_library.png" style="max-height:500px;max-width:600px;">|
+||スクリプトIDを入力し，「検索」をクリックしてください．（スクリプトIDは以下でコピーできます．）|
+||<img src="img/07_enter_script_id.png" style="max-height:500px;max-width:600px;">|
+||最新の「バージョン」（一番大きな数字）を選択し，「追加」をクリックしてください．（IDは変更しないでください．）|
+||<img src="img/08_searched_library.png" style="max-height:500px;max-width:600px;">|
+||ライブラリが追加されます．|
+||<img src="img/09_added_library.png" style="max-height:500px;max-width:600px;">|
+
+**スクリプトIDはこちらからコピーできます．**
 ```
 1lqOvEXcBEAAfzkD4aZGJjShQuhE7bcA3JlCZrCoaVzm-0qRNzXQG-14h
 ```
 
 ---
 
-|5|GitHub（<a href="https://github.com/00kenno/Expense_Report_Form/tree/main/example" target="_blank" rel="noopener noreferrer">/example</a>）から「コード.gs」の内容をコピーする|
+|5|GitHub（<a href="https://github.com/00kenno/Expense_Report_Form/blob/main/example/%E3%82%B3%E3%83%BC%E3%83%89.gs" target="_blank" rel="noopener noreferrer">/example/コード.gs</a>）または以下のコードスニペットから「コード.gs」の例をコピーする|
 |:--|:--|
-||<img src="img/05_open_src.png" style="max-height:500px;max-width:600px;">|
-||<img src="img/06_open_code_gs.png" style="max-height:500px;max-width:600px;">|
-||<img src="img/07_copy_code_gs.png" style="max-height:500px;max-width:600px;">|
+||<img src="img/10_copy_code_gs.png" style="max-height:500px;max-width:600px;">|
 
-|6|「コード.gs」の内容を全て消去し，コピーした内容を貼り付ける|
+**コード.gs**
+```
+function initializeData () {
+  
+  //会計担当者へ/////////////////////////////
+
+  //修正可能箇所#1 適当なタイトルを設定してください．
+  ExpenseReportForm.setTitle("経費申請フォーム");
+
+  //修正可能箇所#2 スプシのリンクを張ってください．(ex."https://docs.google.com/spreadsheets/d/.../edit")
+  ExpenseReportForm.setSpreadSheetUrl("https://docs.google.com/spreadsheets/d/.../edit");
+
+  //修正可能箇所#3 申請先のスプシの「シート名(ApplyTo)」と「項目(Category)」を追加してください．ただし，「シート名」は確実にスプシの「シートの名前」と一致している必要があります．
+  ExpenseReportForm.addApplyTo("運営");
+  ExpenseReportForm.addCategory("運営", "理大祭");
+  ExpenseReportForm.addCategory("運営", "鳥コン");
+  ExpenseReportForm.addCategory("運営", "新歓");
+  ExpenseReportForm.addCategory("運営", "TF");
+  ExpenseReportForm.addCategory("運営", "外部イベント");
+  ExpenseReportForm.addCategory("運営", "ラジコン");
+  ExpenseReportForm.addCategory("運営", "その他");
+
+  ExpenseReportForm.addApplyTo("設計");
+  ExpenseReportForm.addCategory("設計", "桁");
+  ExpenseReportForm.addCategory("設計", "その他");
+
+  ExpenseReportForm.addApplyTo("フラチ");
+  ExpenseReportForm.addCategory("フラチ", "ハング");
+  ExpenseReportForm.addCategory("フラチ", "レンタカー");
+
+  ExpenseReportForm.addApplyTo("翼班");
+  ExpenseReportForm.addCategory("翼班", "木材");
+  ExpenseReportForm.addCategory("翼班", "スタイロ");
+  ExpenseReportForm.addCategory("翼班", "プランク");
+  ExpenseReportForm.addCategory("翼班", "フィルム");
+  ExpenseReportForm.addCategory("翼班", "消耗品");
+  ExpenseReportForm.addCategory("翼班", "レーザーカット");
+  ExpenseReportForm.addCategory("翼班", "その他");
+
+  ExpenseReportForm.addApplyTo("接合班");
+  ExpenseReportForm.addCategory("接合班", "かんざし");
+  ExpenseReportForm.addCategory("接合班", "積層");
+  ExpenseReportForm.addCategory("接合班", "治具");
+  ExpenseReportForm.addCategory("接合班", "木フラ");
+  ExpenseReportForm.addCategory("接合班", "工具・ボルトなど");
+  ExpenseReportForm.addCategory("接合班", "尾翼");
+  ExpenseReportForm.addCategory("接合班", "ウィングレット");
+  ExpenseReportForm.addCategory("接合班", "消耗品");
+  ExpenseReportForm.addCategory("接合班", "その他");
+
+  ExpenseReportForm.addApplyTo("コクピ班");
+  ExpenseReportForm.addCategory("コクピ班", "キャノピー");
+  ExpenseReportForm.addCategory("コクピ班", "御神体");
+  ExpenseReportForm.addCategory("コクピ班", "カウル");
+  ExpenseReportForm.addCategory("コクピ班", "フレーム");
+  ExpenseReportForm.addCategory("コクピ班", "ハッチ");
+  ExpenseReportForm.addCategory("コクピ班", "消耗品");
+  ExpenseReportForm.addCategory("コクピ班", "その他");
+
+  ExpenseReportForm.addApplyTo("電装班");
+  ExpenseReportForm.addCategory("電装班", "基盤");
+  ExpenseReportForm.addCategory("電装班", "センサ類");
+  ExpenseReportForm.addCategory("電装班", "サーボ関連");
+  ExpenseReportForm.addCategory("電装班", "ケーブル・コネクタ類");
+  ExpenseReportForm.addCategory("電装班", "抵抗・コンデンサ");
+  ExpenseReportForm.addCategory("電装班", "LED・ダイオード");
+  ExpenseReportForm.addCategory("電装班", "電源関係");
+  ExpenseReportForm.addCategory("電装班", "消耗品");
+  ExpenseReportForm.addCategory("電装班", "その他電子部品");
+  ExpenseReportForm.addCategory("電装班", "その他");
+
+  /////////////////////////////////////////
+
+  return ExpenseReportForm.syncData();
+}
+
+function submit (records) {
+  initializeData();
+  return ExpenseReportForm.addData(records);
+}
+
+function doGet () {
+  initializeData();
+  return ExpenseReportForm.excute();
+}
+```
+
+---
+
+|6|「コード.gs」の編集|
 |:--|:--|
-||<img src="img/08_clear_code_gs.png" style="max-height:500px;max-width:600px;">|
-||<img src="img/09_paste_code_gs.png" style="max-height:500px;max-width:600px;">|
+||「コード.gs」の内容を全て消去してください．|
+||<img src="img/11_clear_code_gs.png" style="max-height:500px;max-width:600px;">|
+||「5」でコピーした内容を貼り付けてください．|
+||<img src="img/12_paste_code_gs.png" style="max-height:500px;max-width:600px;">|
 
-|7|「Ctrl+S」もしくはフロッピーディスクのボタンをクリックしてプロジェクトを保存する|
+以下のような関数を用いて，フォームをカスタマイズします．
+- ExpenseReportForm.setTitle()
+  - タイトルを設定します．
+- ExpenseReportForm.setSpreadSheetUrl()
+  - スプシのURLを設定します．
+> アドレスバーからコピーすると`https://docs.google.com/spreadsheets/d/.../edit?gid=xxxxxxxxx#gid=xxxxxxxxx`となっていることがほとんどですが，**"?"以下を省いた`https://docs.google.com/spreadsheets/d/.../edit`を設定してください．**
+- ExpenseReportForm.addApplyTo()
+  - 申請先を追加します．**「1」で作成したシートの名前と完全に一致させてください．**
+- ExpenseReportForm.addCategory()
+  - 項目を追加します．
+
+---
+
+|7|プロジェクトの保存|
 |:--|:--|
-||<img src="img/10_save_code_gs.png" style="max-height:500px;max-width:600px;">|
+||「Ctrl+S」もしくはフロッピーディスクのボタンをクリックしてください．|
+||<img src="img/13_save_project.png" style="max-height:500px;max-width:600px;">|
 
+---
 
-|20|コードの準備完了|
+|8|初回デプロイ|
 |:--|:--|
-||<img src="img/25_code_ready.png" style="max-height:500px;max-width:600px;">|
+||「新しいデプロイ」をクリックしてください．|
+||<img src="img/14_new_deploy.png" style="max-height:500px;max-width:600px;">|
+||「種類の選択」の右側にある歯車マークをクリックし，「ウェブアプリ」をクリックしてください．|
+||<img src="img/15_select_deploy_type.png" style="max-height:500px;max-width:600px;">|
+||「新しい説明文」を設定してください．|
+||<img src="img/16_deploy_message.png" style="max-height:500px;max-width:600px;">|
+||「アクセスできるユーザー」を「全員」に変更し，「デプロイ」をクリックしてください．|
+||<img src="img/17_user_access.png" style="max-height:500px;max-width:600px;">|
+||「アクセスを承認」をクリックしてください．|
+||<img src="img/18_apply_access.png" style="max-height:500px;max-width:600px;">|
+||会計用アカウントを選択|
+||<img src="img/19_select_account.png" style="max-height:500px;max-width:600px;">|
+||「Google hasn’t verified this app」と表示される画面で，左下の「Advanced」をクリックする|
+||<img src="img/20_enter_advanced.png" style="max-height:500px;max-width:600px;">|
+||開いたメニューにある「Go to（設定したプロジェクト名）」（ここでは「Go to マイフォーム」 ）をクリックする|
+||<img src="img/21_go_to_project.png" style="max-height:500px;max-width:600px;">|
+||「Allow」をクリックし，Googleアカウントへのアクセスを承認する|
+||<img src="img/22_allow_access.png" style="max-height:500px;max-width:600px;">|
+||デプロイが更新されます．ウェブアプリのURLからフォームにアクセスできます．|
+||<img src="img/23_complete_deploy.png" style="max-height:500px;max-width:600px;">|
 
-|21|「デプロイ」から「新しいデプロイ」をクリックする|
-|:--|:--|
-||<img src="img/26_new_deploy.png" style="max-height:500px;max-width:600px;">|
-
-|22|「種類の選択」の右側にある歯車マークをクリックし，「ウェブアプリ」をクリックする|
-|:--|:--|
-||<img src="img/27_select_deploy_type.png" style="max-height:500px;max-width:600px;">|
-
-|23|「説明」に新しい説明文（ここでは「〇〇代会計への引継ぎ」 ）を追加する|
-|:--|:--|
-||<img src="img/28_enter_deploy_message.png" style="max-height:500px;max-width:600px;">|
-
-|24|「アクセスできるユーザー」を「全員」に変更する|
-|:--|:--|
-||<img src="img/29_user_access.png" style="max-height:500px;max-width:600px;">|
-
-|25|「デプロイ」をクリックする|
-|:--|:--|
-||<img src="img/30_confirm_deploy.png" style="max-height:500px;max-width:600px;">|
-
-|26|「アクセスを承認」をクリックする|
-|:--|:--|
-||<img src="img/31_apply_access.png" style="max-height:500px;max-width:600px;">|
-
-|27|会計用アカウントを選択|
-|:--|:--|
-||<img src="img/32_select_account.png" style="max-height:500px;max-width:600px;">|
-
-|28|「Google hasn’t verified this app」と表示される画面で，左下の「Advanced」をクリックする|
-|:--|:--|
-||<img src="img/33_enter_advanced.png" style="max-height:500px;max-width:600px;">|
-
-|29|開いたメニューにある「Go to（設定したプロジェクト名）」（ここでは「Go to マイフォーム」 ）をクリックする|
-|:--|:--|
-||<img src="img/34_go_to_project.png" style="max-height:500px;max-width:600px;">|
-
-|30|「Allow」をクリックし，Googleアカウントへのアクセスを承認する|
-|:--|:--|
-||<img src="img/35_allow_access.png" style="max-height:500px;max-width:600px;">|
-
-|31|「完了」をクリックし，デプロイを完了する|
-|:--|:--|
-||<img src="img/36_complete_deploy.png" style="max-height:500px;max-width:600px;">|
-
-
+## デプロイの更新
