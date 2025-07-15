@@ -57,7 +57,7 @@ function initializeData () {
   ExpenseReportForm.addCategory("コクピ班", "その他");
 
   ExpenseReportForm.addApplyTo("電装班");
-  ExpenseReportForm.addCategory("電装班", "基盤");
+  ExpenseReportForm.addCategory("電装班", "基板");
   ExpenseReportForm.addCategory("電装班", "センサ類");
   ExpenseReportForm.addCategory("電装班", "サーボ関連");
   ExpenseReportForm.addCategory("電装班", "ケーブル・コネクタ類");
