@@ -3,6 +3,7 @@
 ## 概要
 - Googleスプレッドシートと直接接続する改良版フォームです．
 - 複数項目の送信，税率計算，申請先や購入場所の個別設定などに対応しています．
+- 何かあれば[私にXのDM](https://x.com/MeganeKinoko_)などで連絡してください．
 > このリポジトリ内のdocsはGitHub Pagesで公開されており，フォームのファビコンはここから取得しています．
 
 ## 更新履歴
@@ -17,6 +18,8 @@
   - ライブラリのデプロイを利用する形式に変更．
 
 ## 引継ぎの方法
+---
+
 |0|Googleドライブを開く|
 |:--|:--|
 ||会計用アカウントでログインしてください．|
@@ -138,7 +141,7 @@ function initializeData () {
   ExpenseReportForm.addCategory("コクピ班", "その他");
 
   ExpenseReportForm.addApplyTo("電装班");
-  ExpenseReportForm.addCategory("電装班", "基盤");
+  ExpenseReportForm.addCategory("電装班", "基板");
   ExpenseReportForm.addCategory("電装班", "センサ類");
   ExpenseReportForm.addCategory("電装班", "サーボ関連");
   ExpenseReportForm.addCategory("電装班", "ケーブル・コネクタ類");
@@ -181,7 +184,7 @@ function doGet () {
   - スプシのURLを設定します．
 > アドレスバーからコピーすると`https://docs.google.com/spreadsheets/d/.../edit?gid=xxxxxxxxx#gid=xxxxxxxxx`となっていることがほとんどですが，**"?"以下を省いた`https://docs.google.com/spreadsheets/d/.../edit`を設定してください．**
 - ExpenseReportForm.addApplyTo()
-  - 申請先を追加します．**「1」で作成したシートの名前と完全に一致させてください．**
+  - 申請先（班）を追加します．**「1」で作成したシートの名前と完全に一致させてください．**
 - ExpenseReportForm.addCategory()
   - 項目を追加します．
 
@@ -214,7 +217,37 @@ function doGet () {
 ||<img src="img/21_go_to_project.png" style="max-height:500px;max-width:600px;">|
 ||「Allow」をクリックし，Googleアカウントへのアクセスを承認してください．|
 ||<img src="img/22_allow_access.png" style="max-height:500px;max-width:600px;">|
-||デプロイが更新されます．ウェブアプリのURLからフォームにアクセスできます．|
+||デプロイが更新されます．「ウェブアプリ」のURLからフォームにアクセスできます．「完了」を押すと閉じることができます．|
 ||<img src="img/23_complete_deploy.png" style="max-height:500px;max-width:600px;">|
+||フォームへアクセスするURLは「デプロイを管理」からも取得できます．|
+||<img src="img/24_manage_deploys.png" style="max-height:500px;max-width:600px;">|
+||「ウェブアプリ」のURLからフォームにアクセスできます．|
+||<img src="img/25_deploys.png" style="max-height:500px;max-width:600px;">|
+
+---
 
 ## デプロイの更新
+申請先（班）や項目を追加した場合に，その変更を適用する際はデプロイを更新する必要があります．  
+以下の手順で，同じURLを使い続けつつ，変更を加えることができます．
+
+---
+
+|0|ファイルの変更|
+|:--|:--|
+||ファイルに変更を加えます．ここでは，項目「マイコン」を追加したとします．|
+||<img src="img/26_add_category.png" style="max-height:500px;max-width:600px;">|
+||プロジェクトを保存します．|
+||<img src="img/13_save_project.png" style="max-height:500px;max-width:600px;">|
+
+---
+
+|1|デプロイを編集|
+|:--|:--|
+||「デプロイを管理」を開いた後，ペンのマークの「編集」をクリックします．|
+||<img src="img/27_modify_deploy.png" style="max-height:500px;max-width:600px;">|
+||バージョンを「新バージョン」に，説明も違うものに変更し，「デプロイ」をクリックします．|
+||<img src="img/28_modified_deploy.png" style="max-height:500px;max-width:600px;">|
+||デプロイが更新されます．URLは同じですが，内容は変更されているはずです．|
+||<img src="img/29_updated_deploy.png" style="max-height:500px;max-width:600px;">|
+
+---
