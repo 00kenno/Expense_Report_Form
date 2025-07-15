@@ -1,7 +1,7 @@
 # 経費精算申請フォーム
 
 ## 概要
-- 東京理科大学鳥人間サークル鳥科の経費申請フォームです．
+- 東京理科大学鳥人間サークル鳥科の経費精算申請フォームです．
 - Googleスプレッドシートと直接接続します．
 - 複数項目の送信，税率計算，申請先や購入場所の個別設定などに対応しています．
 - 何かあれば制作者に[XのDM](https://x.com/MeganeKinoko_)などで連絡してください．
@@ -87,7 +87,7 @@ function initializeData () {
   //会計担当者へ/////////////////////////////
 
   //修正可能箇所#1 適当なタイトルを設定してください．
-  ExpenseReportForm.setTitle("経費申請フォーム");
+  ExpenseReportForm.setTitle("経費精算申請フォーム");
 
   //修正可能箇所#2 スプシのリンクを張ってください．(ex."https://docs.google.com/spreadsheets/d/.../edit")
   ExpenseReportForm.setSpreadSheetUrl("https://docs.google.com/spreadsheets/d/.../edit");
@@ -142,6 +142,7 @@ function initializeData () {
 
   ExpenseReportForm.addApplyTo("電装班");
   ExpenseReportForm.addCategory("電装班", "基板");
+  ExpenseReportForm.addCategory("電装班", "マイコン");
   ExpenseReportForm.addCategory("電装班", "センサ類");
   ExpenseReportForm.addCategory("電装班", "サーボ関連");
   ExpenseReportForm.addCategory("電装班", "ケーブル・コネクタ類");
@@ -234,9 +235,7 @@ function doGet () {
 
 |0|ファイルの変更|
 |:--|:--|
-||ファイルに変更を加えます．ここでは，項目「マイコン」を追加したとします．|
-||<img src="img/26_add_category.png" style="max-height:500px;max-width:600px;">|
-||プロジェクトを保存します．|
+||「コード.gs」に変更を加え，プロジェクトを保存します．|
 ||<img src="img/13_save_project.png" style="max-height:500px;max-width:600px;">|
 
 ---
@@ -244,10 +243,10 @@ function doGet () {
 |1|デプロイを編集|
 |:--|:--|
 ||「デプロイを管理」を開いた後，ペンのマークの「編集」をクリックします．|
-||<img src="img/27_modify_deploy.png" style="max-height:500px;max-width:600px;">|
+||<img src="img/26_modify_deploy.png" style="max-height:500px;max-width:600px;">|
 ||バージョンを「新バージョン」に，説明も違うものに変更し，「デプロイ」をクリックします．|
-||<img src="img/28_modified_deploy.png" style="max-height:500px;max-width:600px;">|
-||デプロイが更新されます．URLは同じですが，内容は変更されているはずです．|
-||<img src="img/29_updated_deploy.png" style="max-height:500px;max-width:600px;">|
+||<img src="img/27_modified_deploy.png" style="max-height:500px;max-width:600px;">|
+||デプロイが更新されます．「ウェブアプリ」のURLは同じですが，内容は変更されているはずです．|
+||<img src="img/28_updated_deploy.png" style="max-height:500px;max-width:600px;">|
 
 ---

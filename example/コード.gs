@@ -3,7 +3,7 @@ function initializeData () {
   //会計担当者へ/////////////////////////////
 
   //修正可能箇所#1 適当なタイトルを設定してください．
-  ExpenseReportForm.setTitle("経費申請フォーム");
+  ExpenseReportForm.setTitle("経費精算申請フォーム");
 
   //修正可能箇所#2 スプシのリンクを張ってください．(ex."https://docs.google.com/spreadsheets/d/.../edit")
   ExpenseReportForm.setSpreadSheetUrl("https://docs.google.com/spreadsheets/d/.../edit");
@@ -58,6 +58,7 @@ function initializeData () {
 
   ExpenseReportForm.addApplyTo("電装班");
   ExpenseReportForm.addCategory("電装班", "基板");
+  ExpenseReportForm.addCategory("電装班", "マイコン");
   ExpenseReportForm.addCategory("電装班", "センサ類");
   ExpenseReportForm.addCategory("電装班", "サーボ関連");
   ExpenseReportForm.addCategory("電装班", "ケーブル・コネクタ類");
