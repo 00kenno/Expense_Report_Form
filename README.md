@@ -165,7 +165,7 @@ function submit (records) {
 
 function doGet () {
   initializeData();
-  return ExpenseReportForm.excute();
+  return ExpenseReportForm.execute();
 }
 ```
 
