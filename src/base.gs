@@ -30,7 +30,7 @@ function addCategory (applyTo, category) {
   }
 }
 
-function excute () {
+function execute () {
   const htmlOutput = HtmlService.createTemplateFromFile("index").evaluate();
   htmlOutput.setTitle(Title);
   htmlOutput.setFaviconUrl("https://00kenno.github.io/Expense_Report_Form/TORICA_LOGO_Fabicon.ico");
