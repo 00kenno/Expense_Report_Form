@@ -2,14 +2,21 @@ function initializeData () {
   
   //会計担当者へ/////////////////////////////
 
-  //修正可能箇所#1 適当なタイトルを設定してください．
+  //#1 適当なタイトルを設定してください．
   ExpenseReportForm.setTitle("経費精算申請フォーム");
 
-  //修正可能箇所#2 スプシのリンクを張ってください．(ex."https://docs.google.com/spreadsheets/d/.../edit")
-  ExpenseReportForm.setSpreadSheetUrl("https://docs.google.com/spreadsheets/d/.../edit");
+  //#1.5 タイトル上の画像とファビコンを設定してください．
+  //デフォルトで鳥科仕様になっています．
+  //以下の関数のコメントアウトを解除して，タイトル上に表示される画像とファビコンを設定できます．
+  //引数なしで実行すると，鳥科のロゴとファビコンが表示されなくなります．
+  //ExpenseReportForm.setTitleLogoUrl(); // 設定例 : "https://lh3.googleusercontent.com/d/{画像のファイルID}"
+  //ExpenseReportForm.setFabiconUrl(); // 設定例 : "https://drive.google.com/uc?id={画像のファイルID}&.png"（こちらは拡張子必須です）
 
-  //修正可能箇所#3 申請先のスプシの「シート名(ApplyTo)」と「項目(Category)」を追加してください．
-  //ただし，「シート名」は確実にスプシの「シートの名前」と一致している必要があります．
+  //#2 スプシのリンクを張ってください．(ex."https://docs.google.com/spreadsheets/d/&%$#&%$#&%$#&%$#&%$#&%$#&%$#&%$#&%$#&%$#/edit")
+  ExpenseReportForm.setSpreadSheetUrl("https://docs.google.com/spreadsheets/d/&%$#&%$#&%$#&%$#&%$#&%$#&%$#&%$#&%$#&%$#/edit");
+
+  //#3 申請先のスプシの「シート名(ApplyTo)」と「項目(Category)」を追加してください．
+  //スプシにない「シート名」は自動的にその名前で作成されます．
   ExpenseReportForm.addApplyTo("運営");
   ExpenseReportForm.addCategory("運営", "理大祭");
   ExpenseReportForm.addCategory("運営", "鳥コン");
