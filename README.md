@@ -29,7 +29,8 @@
 
 |0|Googleドライブを開く|
 |:--|:--|
-||会計用アカウントでログインしてください．|
+||**Chromeの場合** → 使用するアカウントのプロファイルを作成し，ログインしてください．|
+||**Chrome以外のブラウザの場合** → **全てのアカウントからログアウト**してから，使用するアカウントでログインしてください．|
 ||<img src="https://ssl.gstatic.com/images/branding/product/1x/drive_2020q4_48dp.png">**<a href="https://drive.google.com/drive/my-drive" target="_blank" rel="noopener noreferrer">Googleドライブ</a>**|
 
 ---
