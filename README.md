@@ -28,25 +28,26 @@
 ---
 
 ### 0. Googleアカウントでログインし直す
+|Googleドライブにアクセスします．|
+|:--|
+|<img src="https://ssl.gstatic.com/images/branding/product/1x/drive_2020q4_48dp.png">**<a href="https://drive.google.com/drive/my-drive" target="_blank" rel="noopener noreferrer">Googleドライブ</a>**|
+
 <details>
-<summary>Chromeブラウザの場合</summary>
+<summary><u>Chromeブラウザの場合（ここをクリック）</u></summary>
 使用するアカウントのプロファイルを作成し，ログインしてください．
 既に完了している場合，操作は必要ありません．
 </details>
 <details>
-<summary>その他のブラウザの場合</summary>
+<summary><u>その他のブラウザの場合（ここをクリック）</u></summary>
 ログイン情報が複数あると，Google Apps Scriptが正しく動作しない可能性があります．
-**全てのアカウントからログアウト**してから，使用するアカウントでログインしてください．
+「全てのアカウントからログアウト」してから，使用するアカウントでログインしてください．
 </details>
-
-|0|Googleドライブを開く|
-|:--|:--|
-||**Chromeの場合** → |
-||**Chrome以外のブラウザの場合** → **全てのアカウントからログアウト**してから，使用するアカウントでログインしてください．|
-||<img src="https://ssl.gstatic.com/images/branding/product/1x/drive_2020q4_48dp.png">**<a href="https://drive.google.com/drive/my-drive" target="_blank" rel="noopener noreferrer">Googleドライブ</a>**|
 
 ---
 
+### 1. Googleスプレッドシートを準備する
+
+画面左上の「新規」から，「Googleスプレッドシート」を
 |1|スプレッドシートの準備|
 |:--|:--|
 ||画像下部のバーからシートを必要数作成し，適当なシート名に変更してください．作成したシートのシート名は後で使用します．|
