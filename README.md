@@ -24,7 +24,7 @@
 - 2025-05-31:
   - ファイルをアップロード．
 
-## 引継ぎの方法（変更があります．修正中です．）
+## 引継ぎの方法
 
 ### 0. Googleアカウントでログインし直す
 <details>
@@ -52,7 +52,7 @@
 <img src="https://ssl.gstatic.com/images/branding/product/1x/drive_2020q4_16dp.png"><a href="https://drive.google.com/drive/my-drive" target="_blank" rel="noopener noreferrer">Googleドライブ</a>にスプレッドシートが保存されていることを確認してください（ここでは「test」としています）．<br>
 <img src="https://themanaslu.net/wp-content/uploads/2022/02/%E3%82%B9%E3%83%97%E3%83%AC%E3%83%83%E3%83%89%E3%82%B7%E3%83%BC%E3%83%88%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E9%96%8B%E3%81%8F2-1-1024x446.png">
 <details>
-<summary><u>まだスプレッドシートを作成していない場合</u></summary>
+<summary><u>まだスプレッドシートを作成していない場合（ここをクリック）</u></summary>
 <br>
 画面左上の「新規」から，「Googleスプレッドシート」をクリックすると，新しくスプレッドシートが作成されます．<br>
 <img src="https://themanaslu.net/wp-content/uploads/2022/02/%E3%83%89%E3%83%A9%E3%82%A4%E3%83%96%E4%BF%9D%E5%AD%98-1024x338.png"><br>
