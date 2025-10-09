@@ -24,83 +24,85 @@
 - 2025-05-31:
   - ファイルをアップロード．
 
-## 引継ぎの方法（変更がありますが，未修正です）
----
+## 引継ぎの方法（変更があります．修正中です．）
 
 ### 0. Googleアカウントでログインし直す
-
 <details>
 <summary><u>Chromeブラウザの場合（ここをクリック）</u></summary>
-使用するアカウントのプロファイルを作成し，ログインしてください．
-既に完了している場合，操作は必要ありません．
-その後，Googleドライブにアクセスします．
-|:--|
-|<img src="https://ssl.gstatic.com/images/branding/product/1x/drive_2020q4_48dp.png">**<a href="https://drive.google.com/drive/my-drive" target="_blank" rel="noopener noreferrer">Googleドライブ</a>**|
+<br>
+使用するアカウントのプロファイルを作成し，ログインしてください．既にログインしている場合，操作は必要ありません．<br>
+その後，<img src="https://ssl.gstatic.com/images/branding/product/1x/drive_2020q4_16dp.png"><a href="https://drive.google.com/drive/my-drive" target="_blank" rel="noopener noreferrer">Googleドライブ</a>にアクセスします．<br>
+<br>
+<a herf="https://eguweb.jp/chrome/62701/">【Google Chrome】プロファイルの追加設定と切り替え方法 | eguweb(エグウェブ)</a>
+<img src="https://eguweb.jp/wp-content/uploads/202303161847-01-1-768x544.jpg">
 </details>
+<br>
 <details>
 <summary><u>その他のブラウザの場合（ここをクリック）</u></summary>
-ログイン情報が複数あると，Google Apps Scriptが正しく動作しない可能性があります．
-Googleドライブにアクセスし，「全てのアカウントからログアウト」してから，使用するアカウントでログインし直してください．
+<br>
+ログイン情報が複数あると，Google Apps Scriptが正しく動作しない可能性があります．<br>
+<img src="https://ssl.gstatic.com/images/branding/product/1x/drive_2020q4_16dp.png"><a href="https://drive.google.com/drive/my-drive" target="_blank" rel="noopener noreferrer">Googleドライブ</a>にアクセスし，「全てのアカウントからログアウト」してから，使用するアカウントでログインし直してください．<br>
+<br>
+<img src="https://pc-hikkoshi.com/wp-content/uploads/2023/03/gmail-logout_09.png">
 </details>
-
-|Googleドライブにアクセス|
-|:--|
-|<img src="https://ssl.gstatic.com/images/branding/product/1x/drive_2020q4_48dp.png">**<a href="https://drive.google.com/drive/my-drive" target="_blank" rel="noopener noreferrer">Googleドライブ</a>**|
 
 ---
 
 ### 1. Googleスプレッドシートを準備する
-
+<img src="https://ssl.gstatic.com/images/branding/product/1x/drive_2020q4_16dp.png"><a href="https://drive.google.com/drive/my-drive" target="_blank" rel="noopener noreferrer">Googleドライブ</a>にスプレッドシートが保存されていることを確認してください（ここでは「test」としています）．<br>
+<img src="https://themanaslu.net/wp-content/uploads/2022/02/%E3%82%B9%E3%83%97%E3%83%AC%E3%83%83%E3%83%89%E3%82%B7%E3%83%BC%E3%83%88%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E9%96%8B%E3%81%8F2-1-1024x446.png">
 <details>
 <summary><u>まだスプレッドシートを作成していない場合</u></summary>
-画面左上の「新規」から，「Googleスプレッドシート」をクリックすると，新しくスプレッドシートが作成されます．
-「無題のスプレッドシート」をクリックすると，名前を変更することができます．
-「〇〇代経費申請」など適当な名前をつけたら，保存マークをクリックします．
+<br>
+画面左上の「新規」から，「Googleスプレッドシート」をクリックすると，新しくスプレッドシートが作成されます．<br>
+<img src="https://themanaslu.net/wp-content/uploads/2022/02/%E3%83%89%E3%83%A9%E3%82%A4%E3%83%96%E4%BF%9D%E5%AD%98-1024x338.png"><br>
+<br>
+「無題のスプレッドシート」をクリックすると，名前を変更することができます．<br>
+「〇〇代経費申請」など適当な名前を入力します（ここでは「test」にしています）．<br>
+少し待って，名前の右側に「ドライブに保存しました」という表示が出れば完了です．<br>
+<img src="https://themanaslu.net/wp-content/uploads/2022/02/%E7%84%A1%E9%A1%8C%E3%81%AE%E3%82%B9%E3%83%97%E3%83%AC%E3%83%83%E3%83%89%E3%82%B7%E3%83%BC%E3%83%88-1024x273.png">
+<br>
+<img src="https://themanaslu.net/wp-content/uploads/2022/02/%E3%82%B9%E3%83%97%E3%83%AC%E3%83%83%E3%83%89%E3%82%B7%E3%83%BC%E3%83%88%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E5%90%8D-1024x274.png"><br>
+<br>
 </details>
 
-Googleドライブを開き，正しく指定した名前でスプレッドシートが保存されていることを確認してください．
+---
+
+### 2. 拡張機能としてのApps Scriptを作成
+「拡張機能」から「Apps Script」をクリックします．<br>
+<img src="https://nefs.jp/wp-content/uploads/2022/11/5-1.webp"><br>
 
 ---
 
-|2|新しいプロジェクトの作成|
-|:--|:--|
-||「新規」→「その他」→「Google Apps Script」をクリックしてください．|
-||<img src="img/02_create_gas.png" style="max-height:500px;max-width:600px;">|
-||「スクリプトを作成」をクリックしてください．|
-||<img src="img/03_create_script_confirm.png" style="max-height:500px;max-width:600px">|
+### 3. プロジェクト名の変更
+「無題のプロジェクト」をクリックしてください．<br>
+<img src="img/04_click_to_change_name.png" style="max-height:500px;max-width:600px;"><br>
+<br>
+プロジェクト名を変更し，「名前を変更」をクリックしてください．<br>
+<img src="img/05_change_project_name.png" style="max-height:500px;max-width:600px;">
 
 ---
 
-|3|プロジェクト名の変更|
-|:--|:--|
-||「無題のプロジェクト」をクリックしてください．|
-||<img src="img/04_click_to_change_name.png" style="max-height:500px;max-width:600px;">|
-||プロジェクト名を変更し，「名前を変更」をクリックしてください．|
-||<img src="img/05_change_project_name.png" style="max-height:500px;max-width:600px;">|
+### 4. ライブラリの追加
+「ライブラリ」の右にある「＋」をクリックしてください．<br>
+<img src="img/06_add_library.png" style="max-height:500px;max-width:600px;"><br>
+<br>
+スクリプトIDを入力し，「検索」をクリックしてください．（スクリプトIDは以下でコピーできます．）<br>
+
+**スクリプトID**：`1lqOvEXcBEAAfzkD4aZGJjShQuhE7bcA3JlCZrCoaVzm-0qRNzXQG-14h`
+
+<img src="img/07_enter_script_id.png" style="max-height:500px;max-width:600px;"><br>
+<br>
+最新の「バージョン」（一番大きな数字）を選択し，「追加」をクリックしてください．（IDは変更しないでください．）<br>
+<img src="img/08_searched_library.png" style="max-height:500px;max-width:600px;"><br>
+<br>
+ライブラリが追加されます．<br>
+<img src="img/09_added_library.png" style="max-height:500px;max-width:600px;"><br>
 
 ---
 
-|4|ライブラリの追加|
-|:--|:--|
-||「ライブラリ」の右にある「＋」をクリックしてください．|
-||<img src="img/06_add_library.png" style="max-height:500px;max-width:600px;">|
-||スクリプトIDを入力し，「検索」をクリックしてください．（スクリプトIDは以下でコピーできます．）|
-||<img src="img/07_enter_script_id.png" style="max-height:500px;max-width:600px;">|
-||最新の「バージョン」（一番大きな数字）を選択し，「追加」をクリックしてください．（IDは変更しないでください．）|
-||<img src="img/08_searched_library.png" style="max-height:500px;max-width:600px;">|
-||ライブラリが追加されます．|
-||<img src="img/09_added_library.png" style="max-height:500px;max-width:600px;">|
-
-**スクリプトIDはこちらからコピーできます．**
-```
-1lqOvEXcBEAAfzkD4aZGJjShQuhE7bcA3JlCZrCoaVzm-0qRNzXQG-14h
-```
-
----
-
-|5|GitHub（<a href="https://github.com/00kenno/Expense_Report_Form/blob/main/example/%E3%82%B3%E3%83%BC%E3%83%89.gs" target="_blank" rel="noopener noreferrer">/example/コード.gs</a>）または以下のコードスニペットから「コード.gs」の例をコピーする|
-|:--|:--|
-||<img src="img/10_copy_code_gs.png" style="max-height:500px;max-width:600px;">|
+### 5. コード.gsの編集
+以下のコードスニペットから「コード.gs」の例をコピーしてください．
 
 **コード.gs**
 ```
@@ -108,14 +110,21 @@ function initializeData () {
   
   //会計担当者へ/////////////////////////////
 
-  //修正可能箇所#1 適当なタイトルを設定してください．
+  //#1 適当なタイトルを設定してください．
   ExpenseReportForm.setTitle("経費精算申請フォーム");
 
-  //修正可能箇所#2 スプシのリンクを張ってください．(ex."https://docs.google.com/spreadsheets/d/.../edit")
-  ExpenseReportForm.setSpreadSheetUrl("https://docs.google.com/spreadsheets/d/.../edit");
+  //#1.5 タイトル上の画像とファビコンを設定してください．
+  //デフォルトで鳥科仕様になっています．鳥科で使用するなら，設定する必要はありません．
+  //以下の関数のコメントアウト(//)を解除して，タイトル上に表示される画像とファビコンを設定できます．
+  //引数なしで実行すると，鳥科のロゴとファビコンが表示されなくなります．
+  //ExpenseReportForm.setTitleLogoUrl(); // 設定例 : "https://lh3.googleusercontent.com/d/{画像のファイルID}"
+  //ExpenseReportForm.setFabiconUrl(); // 設定例 : "https://drive.google.com/uc?id={画像のファイルID}&.png"（こちらは拡張子必須です）
 
-  //修正可能箇所#3 申請先のスプシの「シート名(ApplyTo)」と「項目(Category)」を追加してください．
-  //ただし，「シート名」は確実にスプシの「シートの名前」と一致している必要があります．
+  //#2 スプシのリンクを張ってください．(ex."https://docs.google.com/spreadsheets/d/&%$#&%$#&%$#&%$#&%$#&%$#&%$#&%$#&%$#&%$#/edit")
+  ExpenseReportForm.setSpreadSheetUrl("https://docs.google.com/spreadsheets/d/&%$#&%$#&%$#&%$#&%$#&%$#&%$#&%$#&%$#&%$#/edit");
+
+  //#3 申請先のスプシの「シート名(ApplyTo)」と「項目(Category)」を追加してください．
+  //スプシにない「シート名」は自動的にその名前で作成されます．
   ExpenseReportForm.addApplyTo("運営");
   ExpenseReportForm.addCategory("運営", "理大祭");
   ExpenseReportForm.addCategory("運営", "鳥コン");
@@ -164,15 +173,22 @@ function initializeData () {
 
   ExpenseReportForm.addApplyTo("電装班");
   ExpenseReportForm.addCategory("電装班", "基板");
-  ExpenseReportForm.addCategory("電装班", "マイコン");
+  ExpenseReportForm.addCategory("電装班", "マイコン・IC関連");
   ExpenseReportForm.addCategory("電装班", "センサ類");
   ExpenseReportForm.addCategory("電装班", "サーボ関連");
   ExpenseReportForm.addCategory("電装班", "ケーブル・コネクタ類");
   ExpenseReportForm.addCategory("電装班", "抵抗・コンデンサ");
-  ExpenseReportForm.addCategory("電装班", "LED・ダイオード");
-  ExpenseReportForm.addCategory("電装班", "電源関係");
-  ExpenseReportForm.addCategory("電装班", "消耗品");
+  ExpenseReportForm.addCategory("電装班", "LED・表示器");
+  ExpenseReportForm.addCategory("電装班", "スピーカー・ブザー");
+  ExpenseReportForm.addCategory("電装班", "スイッチ類");
+  ExpenseReportForm.addCategory("電装班", "ヒューズ類");
+  ExpenseReportForm.addCategory("電装班", "ピンヘッダ・ピンソケット");
+  ExpenseReportForm.addCategory("電装班", "電源関連");
+  ExpenseReportForm.addCategory("電装班", "はんだ付け用品");
+  ExpenseReportForm.addCategory("電装班", "工具");
   ExpenseReportForm.addCategory("電装班", "その他電子部品");
+  ExpenseReportForm.addCategory("電装班", "3DP用フィラメント");
+  ExpenseReportForm.addCategory("電装班", "シミュ");
   ExpenseReportForm.addCategory("電装班", "その他");
 
   /////////////////////////////////////////
@@ -190,62 +206,81 @@ function doGet () {
   return ExpenseReportForm.execute();
 }
 ```
-
----
-
-|6|「コード.gs」の編集|
-|:--|:--|
-||「コード.gs」の内容を全て消去してください．|
-||<img src="img/11_clear_code_gs.png" style="max-height:500px;max-width:600px;">|
-||「5」でコピーした内容を貼り付けてください．|
-||<img src="img/12_paste_code_gs.png" style="max-height:500px;max-width:600px;">|
-
+<br>
+「コード.gs」の内容を全て消去してください．<br>
+<img src="img/11_clear_code_gs.png" style="max-height:500px;max-width:600px;"><br>
+<br>
+先程コピーした内容を貼り付けてください．<br>
+<img src="img/12_paste_code_gs.png" style="max-height:500px;max-width:600px;"><br>
+<br>
 以下のような関数を用いて，フォームをカスタマイズします．
+
 - ExpenseReportForm.setTitle()
   - タイトルを設定します．
 - ExpenseReportForm.setSpreadSheetUrl()
   - スプシのURLを設定します．
-> アドレスバーからコピーすると`https://docs.google.com/spreadsheets/d/.../edit?gid=xxxxxxxxx#gid=xxxxxxxxx`となっていることがほとんどですが，**"?"以下を省いた`https://docs.google.com/spreadsheets/d/.../edit`を設定してください．**
+> [!NOTE]
+> アドレスバーからコピーすると`https://docs.google.com/spreadsheets/d/.../edit?gid=xxxxxxxxx#gid=xxxxxxxxx`となっています．**"?"以下を省いた`https://docs.google.com/spreadsheets/d/.../edit`を設定してください．**
 - ExpenseReportForm.addApplyTo()
   - 申請先（班）を追加します．**「1」で作成したシートの名前と完全に一致させてください．**
 - ExpenseReportForm.addCategory()
   - 項目を追加します．
 
+以下は，鳥科では使用しません
+
+- ExpenseReportForm.setTitleLogoUrl()
+  - タイトル上に表示されるロゴを設定できます．
+  - 無引数（カッコ内空欄）で呼び出すと，ロゴは非表示になります．
+  - 設定例 : `ExpenseReportForm.setTitleLogoUrl(https://lh3.googleusercontent.com/d/{画像のファイルID});`
+- ExpenseReportForm.setFabiconUrl()
+  - ブラウザなどで表示されるファビコン（タイトルの戦闘に表示される小さなロゴ）を設定できます．
+  - 無引数（カッコ内空欄）で呼び出すと，ファビコンはGoogle Apps Scriptのデフォルトになります．
+  - 設定例 : `ExpenseReportForm.setFabiconUrl(https://drive.google.com/uc?id={画像のファイルID}&.png);`（こちらは拡張子必須です）
+
 ---
 
-|7|プロジェクトの保存|
-|:--|:--|
-||「Ctrl+S」もしくはフロッピーディスクのボタンをクリックしてください．|
-||<img src="img/13_save_project.png" style="max-height:500px;max-width:600px;">|
+### 7. プロジェクトの保存
+「Ctrl+S」もしくはフロッピーディスクのボタンをクリックしてください．<br>
+<img src="img/13_save_project.png" style="max-height:500px;max-width:600px;">
 
 ---
 
-|8|初回デプロイ|
-|:--|:--|
-||「新しいデプロイ」をクリックしてください．|
-||<img src="img/14_new_deploy.png" style="max-height:500px;max-width:600px;">|
-||「種類の選択」の右側にある歯車マークをクリックし，「ウェブアプリ」をクリックしてください．|
-||<img src="img/15_select_deploy_type.png" style="max-height:500px;max-width:600px;">|
-||「新しい説明文」を設定してください．|
-||<img src="img/16_deploy_message.png" style="max-height:500px;max-width:600px;">|
-||「アクセスできるユーザー」を「全員」に変更し，「デプロイ」をクリックしてください．|
-||<img src="img/17_user_access.png" style="max-height:500px;max-width:600px;">|
-||「アクセスを承認」をクリックしてください．|
-||<img src="img/18_apply_access.png" style="max-height:500px;max-width:600px;">|
-||会計用アカウントを選択してください．|
-||<img src="img/19_select_account.png" style="max-height:500px;max-width:600px;">|
-||「Google hasn’t verified this app」と表示される画面で，左下の「Advanced」をクリックしてください．|
-||<img src="img/20_enter_advanced.png" style="max-height:500px;max-width:600px;">|
-||開いたメニューにある「Go to（設定したプロジェクト名）」（ここでは「Go to マイフォーム」 ）をクリックしてください．|
-||<img src="img/21_go_to_project.png" style="max-height:500px;max-width:600px;">|
-||「Allow」をクリックし，Googleアカウントへのアクセスを承認してください．|
-||<img src="img/22_allow_access.png" style="max-height:500px;max-width:600px;">|
-||デプロイが更新されます．「ウェブアプリ」のURLからフォームにアクセスできます．「完了」を押すと閉じることができます．|
-||<img src="img/23_complete_deploy.png" style="max-height:500px;max-width:600px;">|
-||フォームへアクセスするURLは「デプロイを管理」からも取得できます．|
-||<img src="img/24_manage_deploys.png" style="max-height:500px;max-width:600px;">|
-||「ウェブアプリ」のURLからフォームにアクセスできます．|
-||<img src="img/25_deploys.png" style="max-height:500px;max-width:600px;">|
+### 8. 初回デプロイ
+「新しいデプロイ」をクリックしてください．<br>
+<img src="img/14_new_deploy.png" style="max-height:500px;max-width:600px;"><br>
+<br>
+「種類の選択」の右側にある歯車マークをクリックし，「ウェブアプリ」をクリックしてください．<br>
+<img src="img/15_select_deploy_type.png" style="max-height:500px;max-width:600px;"><br>
+<br>
+「新しい説明文」を設定してください．<br>
+<img src="img/16_deploy_message.png" style="max-height:500px;max-width:600px;"><br>
+<br>
+「アクセスできるユーザー」を「全員」に変更し，「デプロイ」をクリックしてください．<br>
+<img src="img/17_user_access.png" style="max-height:500px;max-width:600px;"><br>
+<br>
+「アクセスを承認」をクリックしてください．<br>
+<img src="img/18_apply_access.png" style="max-height:500px;max-width:600px;"><br>
+<br>
+会計用アカウントを選択してください．<br>
+<img src="img/19_select_account.png" style="max-height:500px;max-width:600px;"><br>
+<br>
+「Google hasn’t verified this app」と表示される画面で，左下の「Advanced」をクリックしてください．<br>
+<img src="img/20_enter_advanced.png" style="max-height:500px;max-width:600px;">
+<br>
+開いたメニューにある「Go to（設定したプロジェクト名）」（ここでは「Go to マイフォーム」 ）をクリックしてください．<br>
+<img src="img/21_go_to_project.png" style="max-height:500px;max-width:600px;"><br>
+<br>
+「Allow」をクリックし，Googleアカウントへのアクセスを承認してください．<br>
+<img src="img/22_allow_access.png" style="max-height:500px;max-width:600px;"><br>
+<br>
+デプロイが更新されます．「ウェブアプリ」のURLからフォームにアクセスできます．「完了」を押すと閉じることができます．<br>
+<img src="img/23_complete_deploy.png" style="max-height:500px;max-width:600px;"><br>
+<br>
+フォームへアクセスするURLは「デプロイを管理」からも取得できます．<br>
+<img src="img/24_manage_deploys.png" style="max-height:500px;max-width:600px;"><br>
+<br>
+「ウェブアプリ」のURLからフォームにアクセスできます．<br>
+<img src="img/25_deploys.png" style="max-height:500px;max-width:600px;"><br>
 
 ---
 
@@ -255,20 +290,20 @@ function doGet () {
 
 ---
 
-|0|ファイルの変更|
-|:--|:--|
-||「コード.gs」に変更を加え，プロジェクトを保存します．|
-||<img src="img/13_save_project.png" style="max-height:500px;max-width:600px;">|
+### 0. ファイルの変更
+「コード.gs」に変更を加え，プロジェクトを保存します．<br>
+<img src="img/13_save_project.png" style="max-height:500px;max-width:600px;"><br>
 
 ---
 
-|1|デプロイを編集|
-|:--|:--|
-||「デプロイを管理」を開いた後，ペンのマークの「編集」をクリックします．|
-||<img src="img/26_modify_deploy.png" style="max-height:500px;max-width:600px;">|
-||バージョンを「新バージョン」に，説明も違うものに変更し，「デプロイ」をクリックします．|
-||<img src="img/27_modified_deploy.png" style="max-height:500px;max-width:600px;">|
-||デプロイが更新されます．「ウェブアプリ」のURLは同じですが，内容は変更されているはずです．|
-||<img src="img/28_updated_deploy.png" style="max-height:500px;max-width:600px;">|
+### 1. デプロイを編集
+「デプロイを管理」を開いた後，ペンのマークの「編集」をクリックします．<br>
+<img src="img/26_modify_deploy.png" style="max-height:500px;max-width:600px;"><br>
+<br>
+バージョンを「新バージョン」に，説明も違うものに変更し，「デプロイ」をクリックします．<br>
+<img src="img/27_modified_deploy.png" style="max-height:500px;max-width:600px;"><br>
+<br>
+デプロイが更新されます．「ウェブアプリ」のURLは同じですが，内容は変更されているはずです．<br>
+<img src="img/28_updated_deploy.png" style="max-height:500px;max-width:600px;"><br>
 
 ---

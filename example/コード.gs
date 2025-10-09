@@ -6,8 +6,8 @@ function initializeData () {
   ExpenseReportForm.setTitle("経費精算申請フォーム");
 
   //#1.5 タイトル上の画像とファビコンを設定してください．
-  //デフォルトで鳥科仕様になっています．
-  //以下の関数のコメントアウトを解除して，タイトル上に表示される画像とファビコンを設定できます．
+  //デフォルトで鳥科仕様になっています．鳥科で使用するなら，設定する必要はありません．
+  //以下の関数のコメントアウト(//)を解除して，タイトル上に表示される画像とファビコンを設定できます．
   //引数なしで実行すると，鳥科のロゴとファビコンが表示されなくなります．
   //ExpenseReportForm.setTitleLogoUrl(); // 設定例 : "https://lh3.googleusercontent.com/d/{画像のファイルID}"
   //ExpenseReportForm.setFabiconUrl(); // 設定例 : "https://drive.google.com/uc?id={画像のファイルID}&.png"（こちらは拡張子必須です）
