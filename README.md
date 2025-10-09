@@ -222,7 +222,7 @@ function doGet () {
 > [!NOTE]
 > アドレスバーからコピーすると`https://docs.google.com/spreadsheets/d/.../edit?gid=xxxxxxxxx#gid=xxxxxxxxx`となっています．**"?"以下を省いた`https://docs.google.com/spreadsheets/d/.../edit`を設定してください．**
 - ExpenseReportForm.addApplyTo()
-  - 申請先（班）を追加します．**「1」で作成したシートの名前と完全に一致させてください．**
+  - 申請先（班）を追加します．
 - ExpenseReportForm.addCategory()
   - 項目を追加します．
 
