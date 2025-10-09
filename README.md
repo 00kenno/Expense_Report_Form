@@ -28,35 +28,37 @@
 ---
 
 ### 0. Googleアカウントでログインし直す
-|Googleドライブにアクセスします．|
-|:--|
-|<img src="https://ssl.gstatic.com/images/branding/product/1x/drive_2020q4_48dp.png">**<a href="https://drive.google.com/drive/my-drive" target="_blank" rel="noopener noreferrer">Googleドライブ</a>**|
 
 <details>
 <summary><u>Chromeブラウザの場合（ここをクリック）</u></summary>
 使用するアカウントのプロファイルを作成し，ログインしてください．
 既に完了している場合，操作は必要ありません．
+その後，Googleドライブにアクセスします．
+|:--|
+|<img src="https://ssl.gstatic.com/images/branding/product/1x/drive_2020q4_48dp.png">**<a href="https://drive.google.com/drive/my-drive" target="_blank" rel="noopener noreferrer">Googleドライブ</a>**|
 </details>
 <details>
 <summary><u>その他のブラウザの場合（ここをクリック）</u></summary>
 ログイン情報が複数あると，Google Apps Scriptが正しく動作しない可能性があります．
-「全てのアカウントからログアウト」してから，使用するアカウントでログインしてください．
+Googleドライブにアクセスし，「全てのアカウントからログアウト」してから，使用するアカウントでログインし直してください．
 </details>
+
+|Googleドライブにアクセス|
+|:--|
+|<img src="https://ssl.gstatic.com/images/branding/product/1x/drive_2020q4_48dp.png">**<a href="https://drive.google.com/drive/my-drive" target="_blank" rel="noopener noreferrer">Googleドライブ</a>**|
 
 ---
 
 ### 1. Googleスプレッドシートを準備する
 
-画面左上の「新規」から，「Googleスプレッドシート」を
-|1|スプレッドシートの準備|
-|:--|:--|
-||画像下部のバーからシートを必要数作成し，適当なシート名に変更してください．作成したシートのシート名は後で使用します．|
-||<img src="img/01_spreadsheet_preparation.png" style="max-height:500px;max-width:600px;">|
+<details>
+<summary><u>まだスプレッドシートを作成していない場合</u></summary>
+画面左上の「新規」から，「Googleスプレッドシート」をクリックすると，新しくスプレッドシートが作成されます．
+「無題のスプレッドシート」をクリックすると，名前を変更することができます．
+「〇〇代経費申請」など適当な名前をつけたら，保存マークをクリックします．
+</details>
 
-また，すべてのシートに以下のようなヘッダーを準備してください．
-|タイムスタンプ|名前|項目|品名|単価|個数|単価×個数|別途消費税|送料・電車賃・代引き手数料|割引|請求金額|購入場所|購入目的|
-|--|--|--|--|--|--|--|--|--|--|--|--|--|
-|-|-|-|-|-|-|-|-|-|-|-|-|-|
+Googleドライブを開き，正しく指定した名前でスプレッドシートが保存されていることを確認してください．
 
 ---
 
