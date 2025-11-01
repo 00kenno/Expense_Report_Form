@@ -1,6 +1,7 @@
 /*
 鳥科26代電装班長により作成
 X: https://x.com/MeganeKinoko_
+Mail: irongolem0100@gmail.com
 */
 
 //base.gs
@@ -66,6 +67,10 @@ function include (filename) {
 }
 
 function syncData () {
+  if (SpreadSheetUrl === "") {
+    const ss = SpreadsheetApp.getActive(); // アクティブなスプレッドシートを取得
+    SpreadSheetUrl = ss.getUrl(); // スプレッドシートからそのURLを取得
+  }
   return {
     ssUrl: SpreadSheetUrl,
     applyTo: ApplyToList,
@@ -74,15 +79,14 @@ function syncData () {
 }
 
 function addData (records) { // スプレッドシートに値を送信する関数
-  var ss = SpreadsheetApp.openByUrl(SpreadSheetUrl); // スプレッドシートをURLで取得
+  const ss = SpreadsheetApp.openByUrl(SpreadSheetUrl); // スプレッドシートをURLで取得
   const lock = LockService.getScriptLock();
-  var sheetsList = ss.getSheets(); // すべてのシートを取得
   if (lock.tryLock(10000)) {
     for (let i = 0; i < records.length; i++) {
-      var sheet = ss.getSheetByName(records[i].applyTo); // "申請先"の名前でスプレッドシートのシートを取得
+      let sheet = ss.getSheetByName(records[i].applyTo); // "申請先"の名前でスプレッドシートのシートを取得
       if (!sheet) { // sheet == nullの場合
         ss.insertSheet(records[i].applyTo); // "申請先"の名前でスプレッドシートのシートを挿入
-        var sheet = ss.getSheetByName(records[i].applyTo); // "申請先"の名前でスプレッドシートのシートを取得
+        sheet = ss.getSheetByName(records[i].applyTo); // "申請先"の名前でスプレッドシートのシートを取得
         sheet.appendRow(["タイムスタンプ", "名前", "項目", "品名", "単価", "個数", "単価×個数", "別途消費税", "送料・電車賃・代引き手数料", "割引", "請求金額", "購入場所", "購入目的"]); // ヘッダーを追加
       }
       const now = new Date(); // 日時を取得

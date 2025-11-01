@@ -9,6 +9,8 @@
 > このリポジトリ内のdocsはGitHub Pagesで公開されており，フォームのファビコンはここから取得しています．
 
 ## 更新履歴
+- 2025-11-01:
+  - バインド（紐づけ）されたスプレッドシートと直接リンクする形式に変更．
 - 2025-09-29:
   - 「申請先」と一致する名前のスプレッドシートのシートが存在しない場合，自動的に追加される機能を実装．
   - タイトル上部の画像及びファビコンを変更する関数を実装．
@@ -49,7 +51,7 @@
 ---
 
 ### 1. Googleスプレッドシートを準備する
-<img src="https://ssl.gstatic.com/images/branding/product/1x/drive_2020q4_16dp.png"><a href="https://drive.google.com/drive/my-drive" target="_blank" rel="noopener noreferrer">Googleドライブ</a>にスプレッドシートが保存されていることを確認してください（ここでは「test」としています）．<br>
+<img src="https://ssl.gstatic.com/images/branding/product/1x/drive_2020q4_16dp.png"><a href="https://drive.google.com/drive/my-drive" target="_blank" rel="noopener noreferrer">Googleドライブ</a>にスプレッドシートが保存されていることを確認してください（画像では「test」としています）．<br>
 <img src="https://themanaslu.net/wp-content/uploads/2022/02/%E3%82%B9%E3%83%97%E3%83%AC%E3%83%83%E3%83%89%E3%82%B7%E3%83%BC%E3%83%88%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E9%96%8B%E3%81%8F2-1-1024x446.png">
 <details>
 <summary><u>まだスプレッドシートを作成していない場合（ここをクリック）</u></summary>
@@ -58,7 +60,7 @@
 <img src="https://themanaslu.net/wp-content/uploads/2022/02/%E3%83%89%E3%83%A9%E3%82%A4%E3%83%96%E4%BF%9D%E5%AD%98-1024x338.png"><br>
 <br>
 「無題のスプレッドシート」をクリックすると，名前を変更することができます．<br>
-「〇〇代経費申請」など適当な名前を入力します（ここでは「test」にしています）．<br>
+「〇〇代経費申請」など適当な名前を入力します（画像では「test」にしています）．<br>
 少し待って，名前の右側に「ドライブに保存しました」という表示が出れば完了です．<br>
 <img src="https://themanaslu.net/wp-content/uploads/2022/02/%E7%84%A1%E9%A1%8C%E3%81%AE%E3%82%B9%E3%83%97%E3%83%AC%E3%83%83%E3%83%89%E3%82%B7%E3%83%BC%E3%83%88-1024x273.png">
 <br>
@@ -110,21 +112,18 @@ function initializeData () {
   
   //会計担当者へ/////////////////////////////
 
-  //#1 適当なタイトルを設定してください．
+  // #1 適当なタイトルを設定してください．
   ExpenseReportForm.setTitle("経費精算申請フォーム");
 
-  //#1.5 タイトル上の画像とファビコンを設定してください．
-  //デフォルトで鳥科仕様になっています．鳥科で使用するなら，設定する必要はありません．
-  //以下の関数のコメントアウト(//)を解除して，タイトル上に表示される画像とファビコンを設定できます．
-  //引数なしで実行すると，鳥科のロゴとファビコンが表示されなくなります．
-  //ExpenseReportForm.setTitleLogoUrl(); // 設定例 : "https://lh3.googleusercontent.com/d/{画像のファイルID}"
-  //ExpenseReportForm.setFabiconUrl(); // 設定例 : "https://drive.google.com/uc?id={画像のファイルID}&.png"（こちらは拡張子必須です）
+  // #1.5 タイトル上の画像とファビコンを設定してください．
+  // ※デフォルトで鳥科仕様になっているため，鳥科で利用する場合には設定不要です．
+  // 以下の関数のコメントアウトを解除して，タイトル上に表示される画像とファビコンを設定できます．
+  // 引数なしで実行すると，鳥科のロゴとファビコンが表示されなくなります．
+  // ExpenseReportForm.setTitleLogoUrl(); // 設定例 : "https://lh3.googleusercontent.com/d/{画像のファイルID}"
+  // ExpenseReportForm.setFabiconUrl(); // 設定例 : "https://drive.google.com/uc?id={画像のファイルID}&.png"（こちらは拡張子必須です）
 
-  //#2 スプシのリンクを張ってください．(ex."https://docs.google.com/spreadsheets/d/&%$#&%$#&%$#&%$#&%$#&%$#&%$#&%$#&%$#&%$#/edit")
-  ExpenseReportForm.setSpreadSheetUrl("https://docs.google.com/spreadsheets/d/&%$#&%$#&%$#&%$#&%$#&%$#&%$#&%$#&%$#&%$#/edit");
-
-  //#3 申請先のスプシの「シート名(ApplyTo)」と「項目(Category)」を追加してください．
-  //スプシにない「シート名」は自動的にその名前で作成されます．
+  // #2 申請先のスプシの「シート名(ApplyTo)」と「項目(Category)」を追加してください．
+  // スプシにない「シート名」は自動的にその名前で作成されます．
   ExpenseReportForm.addApplyTo("運営");
   ExpenseReportForm.addCategory("運営", "理大祭");
   ExpenseReportForm.addCategory("運営", "鳥コン");
@@ -173,23 +172,18 @@ function initializeData () {
 
   ExpenseReportForm.addApplyTo("電装班");
   ExpenseReportForm.addCategory("電装班", "基板");
-  ExpenseReportForm.addCategory("電装班", "マイコン・IC関連");
-  ExpenseReportForm.addCategory("電装班", "センサ類");
-  ExpenseReportForm.addCategory("電装班", "サーボ関連");
-  ExpenseReportForm.addCategory("電装班", "ケーブル・コネクタ類");
-  ExpenseReportForm.addCategory("電装班", "抵抗・コンデンサ");
-  ExpenseReportForm.addCategory("電装班", "LED・表示器");
-  ExpenseReportForm.addCategory("電装班", "スピーカー・ブザー");
-  ExpenseReportForm.addCategory("電装班", "スイッチ類");
-  ExpenseReportForm.addCategory("電装班", "ヒューズ類");
-  ExpenseReportForm.addCategory("電装班", "ピンヘッダ・ピンソケット");
-  ExpenseReportForm.addCategory("電装班", "電源関連");
-  ExpenseReportForm.addCategory("電装班", "はんだ付け用品");
-  ExpenseReportForm.addCategory("電装班", "工具");
-  ExpenseReportForm.addCategory("電装班", "その他電子部品");
-  ExpenseReportForm.addCategory("電装班", "3DP用フィラメント");
-  ExpenseReportForm.addCategory("電装班", "シミュ");
+  ExpenseReportForm.addCategory("電装班", "マイコン・IC・メモリなど");
+  ExpenseReportForm.addCategory("電装班", "センサーなど");
+  ExpenseReportForm.addCategory("電装班", "モーター・スピーカーなど");
+  ExpenseReportForm.addCategory("電装班", "ケーブル・コネクタなど");
+  ExpenseReportForm.addCategory("電装班", "LED・ディスプレイなど");
+  ExpenseReportForm.addCategory("電装班", "抵抗・コンデンサーなど");
+  ExpenseReportForm.addCategory("電装班", "電源・バッテリーなど");
+  ExpenseReportForm.addCategory("電装班", "筐体・構造材料など");
+  ExpenseReportForm.addCategory("電装班", "消耗品・固定具など");
+  ExpenseReportForm.addCategory("電装班", "3Dプリンタ用品など");
   ExpenseReportForm.addCategory("電装班", "その他");
+  ExpenseReportForm.addCategory("電装班", "シミュレーター");
 
   /////////////////////////////////////////
 
@@ -217,10 +211,6 @@ function doGet () {
 
 - ExpenseReportForm.setTitle()
   - タイトルを設定します．
-- ExpenseReportForm.setSpreadSheetUrl()
-  - スプシのURLを設定します．
-> [!NOTE]
-> アドレスバーからコピーすると`https://docs.google.com/spreadsheets/d/.../edit?gid=xxxxxxxxx#gid=xxxxxxxxx`となっています．**"?"以下を省いた`https://docs.google.com/spreadsheets/d/.../edit`を設定してください．**
 - ExpenseReportForm.addApplyTo()
   - 申請先（班）を追加します．
 - ExpenseReportForm.addCategory()
@@ -267,7 +257,7 @@ function doGet () {
 「Google hasn’t verified this app」と表示される画面で，左下の「Advanced」をクリックしてください．<br>
 <img src="img/20_enter_advanced.png" style="max-height:500px;max-width:600px;">
 <br>
-開いたメニューにある「Go to（設定したプロジェクト名）」（ここでは「Go to マイフォーム」 ）をクリックしてください．<br>
+開いたメニューにある「Go to（設定したプロジェクト名）」（画像では「Go to マイフォーム」 ）をクリックしてください．<br>
 <img src="img/21_go_to_project.png" style="max-height:500px;max-width:600px;"><br>
 <br>
 「Allow」をクリックし，Googleアカウントへのアクセスを承認してください．<br>
