@@ -9,6 +9,8 @@
 > このリポジトリ内のdocsはGitHub Pagesで公開されており，フォームのファビコンはここから取得しています．
 
 ## 更新履歴
+- 2025-11-02:
+  - 「申請者」と「購入場所」，「購入目的」のデフォルトを設定する関数を追加．
 - 2025-11-01:
   - バインド（紐づけ）されたスプレッドシートと直接リンクする形式に変更．
 - 2025-09-29:
@@ -115,12 +117,13 @@ function initializeData () {
   // #1 適当なタイトルを設定してください．
   ExpenseReportForm.setTitle("経費精算申請フォーム");
 
-  // #1.5 タイトル上の画像とファビコンを設定してください．
+  // #1.5 タイトル上の画像とファビコン，回答のデフォルトが設定可能です．
   // ※デフォルトで鳥科仕様になっているため，鳥科で利用する場合には設定不要です．
-  // 以下の関数のコメントアウトを解除して，タイトル上に表示される画像とファビコンを設定できます．
-  // 引数なしで実行すると，鳥科のロゴとファビコンが表示されなくなります．
-  // ExpenseReportForm.setTitleLogoUrl(); // 設定例 : "https://lh3.googleusercontent.com/d/{画像のファイルID}"
-  // ExpenseReportForm.setFabiconUrl(); // 設定例 : "https://drive.google.com/uc?id={画像のファイルID}&.png"（こちらは拡張子必須です）
+  // ExpenseReportForm.setTitleLogoUrl(); // タイトル上に表示される画像を設定できます．引数なしで実行すると，鳥科のロゴが表示されなくなります．設定例 : "https://lh3.googleusercontent.com/d/{画像のファイルID}"
+  // ExpenseReportForm.setFabiconUrl(); // ファビコンを設定できます．引数なしで実行すると，GASのファビコンが適用されます．設定例 : "https://drive.google.com/uc?id={画像のファイルID}&.png"（こちら は拡張子必須です）
+  // ExpenseReportForm.setDefaultName("-"); // 申請者の名前のデフォルトを設定できます．
+  // ExpenseReportForm.setDefaultRetailer("-"); // 購入場所のデフォルトを設定できます．
+  // ExpenseReportForm.setDefaultPurpose("-"); // 購入目的のデフォルトを設定できます．
 
   // #2 申請先のスプシの「シート名(ApplyTo)」と「項目(Category)」を追加してください．
   // スプシにない「シート名」は自動的にその名前で作成されます．
@@ -207,7 +210,8 @@ function doGet () {
 先程コピーした内容を貼り付けてください．<br>
 <img src="img/12_paste_code_gs.png" style="max-height:500px;max-width:600px;"><br>
 <br>
-以下のような関数を用いて，フォームをカスタマイズします．
+
+以下のような関数を用いて，フォームをカスタマイズできます．
 
 - ExpenseReportForm.setTitle()
   - タイトルを設定します．
@@ -226,6 +230,12 @@ function doGet () {
   - ブラウザなどで表示されるファビコン（タイトルの戦闘に表示される小さなロゴ）を設定できます．
   - 無引数（カッコ内空欄）で呼び出すと，ファビコンはGoogle Apps Scriptのデフォルトになります．
   - 設定例 : `ExpenseReportForm.setFabiconUrl(https://drive.google.com/uc?id={画像のファイルID}&.png);`（こちらは拡張子必須です）
+- ExpenseReportForm.setDefaultName();
+  - 申請者の名前のデフォルトを設定できます．
+- ExpenseReportForm.setDefaultRetailer();
+  - 購入場所のデフォルトを設定できます．
+- ExpenseReportForm.setDefaultPurpose();
+  - 購入目的のデフォルトを設定できます．
 
 ---
 

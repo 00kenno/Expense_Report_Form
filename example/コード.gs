@@ -5,12 +5,13 @@ function initializeData () {
   // #1 適当なタイトルを設定してください．
   ExpenseReportForm.setTitle("経費精算申請フォーム");
 
-  // #1.5 タイトル上の画像とファビコンを設定してください．
+  // #1.5 タイトル上の画像とファビコン，回答のデフォルトが設定可能です．
   // ※デフォルトで鳥科仕様になっているため，鳥科で利用する場合には設定不要です．
-  // 以下の関数のコメントアウトを解除して，タイトル上に表示される画像とファビコンを設定できます．
-  // 引数なしで実行すると，鳥科のロゴとファビコンが表示されなくなります．
-  // ExpenseReportForm.setTitleLogoUrl(); // 設定例 : "https://lh3.googleusercontent.com/d/{画像のファイルID}"
-  // ExpenseReportForm.setFabiconUrl(); // 設定例 : "https://drive.google.com/uc?id={画像のファイルID}&.png"（こちらは拡張子必須です）
+  // ExpenseReportForm.setTitleLogoUrl(); // タイトル上に表示される画像を設定できます．引数なしで実行すると，鳥科のロゴが表示されなくなります．設定例 : "https://lh3.googleusercontent.com/d/{画像のファイルID}"
+  // ExpenseReportForm.setFabiconUrl(); // ファビコンを設定できます．引数なしで実行すると，GASのファビコンが適用されます．設定例 : "https://drive.google.com/uc?id={画像のファイルID}&.png"（こちらは拡張子必須です）
+  // ExpenseReportForm.setDefaultName("-"); // 申請者の名前のデフォルトを設定できます．
+  // ExpenseReportForm.setDefaultRetailer("-"); // 購入場所のデフォルトを設定できます．
+  // ExpenseReportForm.setDefaultPurpose("-"); // 購入目的のデフォルトを設定できます．
 
   // #2 申請先のスプシの「シート名(ApplyTo)」と「項目(Category)」を追加してください．
   // スプシにない「シート名」は自動的にその名前で作成されます．
@@ -62,18 +63,16 @@ function initializeData () {
 
   ExpenseReportForm.addApplyTo("電装班");
   ExpenseReportForm.addCategory("電装班", "基板");
-  ExpenseReportForm.addCategory("電装班", "マイコン・IC・メモリなど");
-  ExpenseReportForm.addCategory("電装班", "センサーなど");
-  ExpenseReportForm.addCategory("電装班", "モーター・スピーカーなど");
-  ExpenseReportForm.addCategory("電装班", "ケーブル・コネクタなど");
-  ExpenseReportForm.addCategory("電装班", "LED・ディスプレイなど");
-  ExpenseReportForm.addCategory("電装班", "抵抗・コンデンサーなど");
-  ExpenseReportForm.addCategory("電装班", "電源・バッテリーなど");
-  ExpenseReportForm.addCategory("電装班", "筐体・構造材料など");
-  ExpenseReportForm.addCategory("電装班", "消耗品・固定具など");
-  ExpenseReportForm.addCategory("電装班", "3Dプリンタ用品など");
+  ExpenseReportForm.addCategory("電装班", "マイコン");
+  ExpenseReportForm.addCategory("電装班", "センサ類");
+  ExpenseReportForm.addCategory("電装班", "サーボ関連");
+  ExpenseReportForm.addCategory("電装班", "ケーブル・コネクタ類");
+  ExpenseReportForm.addCategory("電装班", "抵抗・コンデンサ");
+  ExpenseReportForm.addCategory("電装班", "LED・ダイオード");
+  ExpenseReportForm.addCategory("電装班", "電源関係");
+  ExpenseReportForm.addCategory("電装班", "消耗品");
+  ExpenseReportForm.addCategory("電装班", "その他電子部品");
   ExpenseReportForm.addCategory("電装班", "その他");
-  ExpenseReportForm.addCategory("電装班", "シミュレーター");
 
   /////////////////////////////////////////
 

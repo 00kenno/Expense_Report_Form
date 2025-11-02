@@ -18,11 +18,11 @@
       <div id="formWrapper">
         <form id="form">
           <div id="header">
-            <div class="inputItem"><label>申請者</label><input type="text" id="name" placeholder="氏名を入力"></div>
+            <div class="inputItem"><label>申請者</label><input type="text" id="name" placeholder="氏名を入力" value="<?= DefaultName ?>"></div>
             <div class="inputItem">
               <label>購入場所</label>
               <div id="retailerSwitch" class="switchWrapper" onclick="classSwitcher(this)"><div class="toggleSwitch left"></div><span class="left selected">一括</span><span class="right">個別</span></div>
-              <input type="text" id="retailer" placeholder="購入場所を入力">
+              <input type="text" id="retailer" placeholder="購入場所を入力" value="<?= DefaultRetailer ?>">
             </div>
             <div class="inputItem">
               <label>申請先</label>
@@ -32,7 +32,7 @@
             <div class="inputItem">
               <label>購入目的</label>
               <div id="purposeSwitch" class="switchWrapper" onclick="classSwitcher(this)"><div class="toggleSwitch left"></div><span class="left selected">一括</span><span class="right">個別</span></div>
-              <input type="text" id="purpose" placeholder="購入目的を入力">
+              <input type="text" id="purpose" placeholder="購入目的を入力" value="<?= DefaultPurpose ?>">
             </div>
             <div class="inputItem">
               <label>税率計算</label> 
@@ -87,7 +87,7 @@
       </div>
       <div id="links">
         <a href="<?= SpreadSheetUrl ?>" target="_blank" rel="noopener noreferrer">スプシはこちら</a>
-        <a href="https://github.com/00kenno/Expense_Report_Form" target="_blank" rel="noopener noreferrer">引継ぎと管理</a>
+        <a href="https://github.com/00kenno/Expense_Report_Form" target="_blank" rel="noopener noreferrer">このフォームについて</a>
       </div>
       <div id="bottomFixed">
         <div id="bottomContent">
