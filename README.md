@@ -27,8 +27,8 @@
 ## 更新履歴
 <details>
 <summary><u>更新履歴を開く</u></summary>
-<br>
 <ul>
+<br>
 <strong>2025-11-02:</strong>
 <li>「申請者」と「購入場所」，「購入目的」のデフォルトを設定する関数を追加．</li>
 </ul>
