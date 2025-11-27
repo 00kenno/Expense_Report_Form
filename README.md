@@ -9,8 +9,9 @@
 > このリポジトリ内のdocsはGitHub Pagesで公開されており，フォームのファビコンはここから取得しています．
 
 ## 使い方
-<img src="img/04_click_to_change_name.png" style="max-height:500px;max-width:600px;"><br>
-わかりにくいかもしれない部分に関する説明です．
+<img src="img/00_example.png" style="max-height:500px;max-width:600px;"><br>
+<br>
+以下，わかりにくいかもしれない部分に関する説明です．
 ### 「＋（プラスマーク）」ボタン
 - 画面下部のこのボタンを押すと，新しいアイテムが追加され，複数の商品に関する内容を同時に送信することができます．
 ### - 「一括」「個別」入力切り替え機能
@@ -26,6 +27,7 @@
 ## 更新履歴
 <details>
 <summary><u>更新履歴を開く</u></summary>
+<br>
 <ul>
 <strong>2025-11-02:</strong>
 <li>「申請者」と「購入場所」，「購入目的」のデフォルトを設定する関数を追加．</li>
