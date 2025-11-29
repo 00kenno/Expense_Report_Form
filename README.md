@@ -1,4 +1,6 @@
-# 経費精算申請フォーム（デモページは[こちら](https://script.google.com/macros/s/AKfycbzcfYVeeMSKhGk_sj8BYYwdl7ZLyvZTAJPf8Hb-x7IEZlEONKxFN-62XeHpFv2fPIF1cg/exec)）
+# 経費精算申請フォーム
+デモページはこちら↓
+https://script.google.com/macros/s/AKfycbzcfYVeeMSKhGk_sj8BYYwdl7ZLyvZTAJPf8Hb-x7IEZlEONKxFN-62XeHpFv2fPIF1cg/exec
 
 ## 概要
 - 東京理科大学鳥人間サークル鳥科で使用する，経費精算申請フォームの生成ライブラリです．
@@ -23,6 +25,10 @@
 ### 「補正」について
 - 販売店によっては，商品の合計金額に対して税率をかける場合があります．その場合，このフォーム上での税率計算後の金額と異なってしまうことがあります．
 - フォーム上の合計金額と実際の合計金額の差を補正する際は，「補正」を「あり」に切り替えて税額を補正してください．
+### 「スプシはこちら」について
+- データ送信先のGoogleスプレッドシートを新しいタブ（またはウィンドウ）で開きます．
+### 「このフォームについて」について
+- このGitHubリポジトリを新しいタブ（またはウィンドウ）で開きます．
 
 ## 更新履歴
 <details>
